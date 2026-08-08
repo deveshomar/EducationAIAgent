@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleLLmIntegration", "GoogleLLmIntegration\GoogleLLmIntegration.csproj", "{76B626CF-3134-41ED-A2B1-71896ABA0A37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GithubModelsLLMIntegration", "GithubModelsLLMIntegration\GithubModelsLLMIntegration.csproj", "{06A5F9B8-B30B-431B-8FA8-ABD1FFCAE3DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76B626CF-3134-41ED-A2B1-71896ABA0A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76B626CF-3134-41ED-A2B1-71896ABA0A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76B626CF-3134-41ED-A2B1-71896ABA0A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76B626CF-3134-41ED-A2B1-71896ABA0A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06A5F9B8-B30B-431B-8FA8-ABD1FFCAE3DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06A5F9B8-B30B-431B-8FA8-ABD1FFCAE3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06A5F9B8-B30B-431B-8FA8-ABD1FFCAE3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06A5F9B8-B30B-431B-8FA8-ABD1FFCAE3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A77D07F-EAE4-47C8-91F7-7F29B26B55EB}
+	EndGlobalSection
+EndGlobal

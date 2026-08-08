@@ -1,0 +1,65 @@
+========================================Generative AI========================
+
+
+  AUG 02 2026.
+
+
+ TOPICS for TODAY
+
+ a. Session 1 Recap
+ b. Understanding Model parameters
+ c. Learn about reasoining Models
+ d. Image Generation
+ e. Image Analysis
+
+
+
+       Reasoning models  - Create Tasks, Create Plan,  using our Code C#, python =   Agent
+
+       can you drop one email for my leave details , salary details , my last year tax sheet
+       and please also drop one email to my manger that tomarrow i will be on leave.
+
+
+       Make LLM CALL SEND OUR QUESTIOJN And get task and plan
+        
+       Task 1 -  Drop email
+       Task 2 -  Collect leaves
+       Task 3 -  Collect salary detauls
+       Task 4-   Last year Tax sheet
+       task 5 -  email to manager
+       Task 6 -  generate email for leave
+       Task 7-   Combine result for LEaves, salary, tax sheet etc   
+
+
+      Plan 
+
+
+      Task 1 -  Get Leave details   - DB Call 
+      Task 2   Salary details
+      Task 3-  Tax sheet for last year
+      Task 4  - Combine T1,T2,T3
+      Task 5 - Email Creation of Task 4 
+      Task 6 - generate Email for Leave
+      Task 7 - Drop email for Task 5
+      TAsk 8-  Drop email for Task 6   
+============================================================================================
+
+     Task -  Generte Code    - most of time accurate or near to close result
+     Task -  Health report   - 
+
+     Task- Create one post on marking so that ppl will attract
+           creativity 
+
+
+    temprature 
+
+
+
+
+
+
+      
+       
+
+   
+

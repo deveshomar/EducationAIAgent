@@ -1,0 +1,61 @@
+GENERATIVE AI
+===============================================================================================================
+
+L1, L2, L3 Developers
+
+================================================================================================================
+where Genai Lies in bigger circle
+AI
+ └── ML
+      └── DL
+           └── GenAI
+
+=
+Deep Learning
+│
+└── Transformer based models
+       │
+       ├── GPT
+       ├── Claude
+       ├── Gemini
+       ├── Llama
+       ├── Mistral
+       └── Qwen
+
+
+
+Original Transformer (2017)
+        │
+        ├── GPT Family
+        │      ├── GPT-2
+        │      ├── GPT-3
+        │      ├── GPT-4
+        │      └── GPT-5
+        │
+        ├── Claude Family
+        │
+        ├── Gemini Family
+        │
+        ├── Llama Family
+        │
+        ├── Mistral Family
+        │
+        └── Qwen Family
+
+
+======================================================================================================================
+What is difference bwtween tradetiaonal AI vs generative AI
+
+
+
+LLm Arch
+Tokens
+Vectors
+context window
+Context Engg
+Position encoding
+self attention
+
+supervise learning vs non supervise earning
+
+
