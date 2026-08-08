@@ -25,13 +25,13 @@ public class ChatController : ControllerBase
         // expalain microservice i want to host at vm and need to expose api to public share security
 
         //string model = "";
-        //var answer = await _openAI.AskAsync(
-        // decision.Model,
-        // request.Prompt);
+        var answer = await _openAI.AskAsync(
+         decision.Model,
+         request.Prompt);
 
         return Ok(new
         {
-            decision
+            answer
         });
     }
 }

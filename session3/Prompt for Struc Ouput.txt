@@ -1,0 +1,131 @@
+You are a data extraction engine.
+
+Task:
+Extract structured information from the given text.
+
+Instructions:
+- Extract ONLY the fields listed below.
+- Do NOT add extra fields.
+- Do NOT assume missing data.
+- If any field is not present, return null.
+- Output must be STRICT valid JSON.
+- Do NOT include any explanation or extra text.
+
+Fields to extract:
+- name
+- city
+- state
+- education
+- job_title
+- experience_years
+- job_location
+- dependents (array of objects with fields: name, relation)
+
+Rules:
+- "city" = current residence city
+- "state" = current residence state
+- "education" = degree or field of study
+- "experience_years" = number of years of work experience (if not clearly mentioned → null)
+- "job_location" = city where currently working
+- "dependents" = spouse and children only
+
+Output format (STRICT):
+{
+  "name": "",
+  "city": "",
+  "state": "",
+  "education": "",
+  "job_title": "",
+  "experience_years": null,
+  "job_location": "",
+  "dependents": [
+    {
+      "name": "",
+      "relation": ""
+    }
+  ]
+}
+
+Text:
+"""
+{{input_text}}
+"""
+
+=============================================================
+
+My name is Rajesh Verma, and I am 38 years old.
+I was born and raised in Jaipur city.
+Jaipur is in the state of Rajasthan, India.
+I still love the culture and traditions of my hometown.
+Currently, I live in Hyderabad, Telangana.
+I moved here about 10 years ago for work.
+I work as a Senior Software Engineer.
+I am employed at TechNova Solutions Pvt Ltd.
+It is a mid-sized IT company.
+We mainly focus on enterprise software development.
+I completed my graduation in Computer Science.
+I studied at Rajasthan Technical University.
+After my studies, I started my career in Bangalore.
+But later, I got a better opportunity in Hyderabad.
+That’s when I decided to relocate.
+It was a big decision for me at that time.
+But it turned out to be a great choice.
+My wife’s name is Neha Verma.
+She is a school teacher.
+She teaches mathematics to high school students.
+We met through a family arrangement.
+Over time, we grew very close.
+We share a strong bond now.
+We have two children.
+My son's name is Aarav.
+He is 10 years old.
+He loves playing cricket.
+My daughter’s name is Anaya.
+She is 6 years old.
+She enjoys drawing and painting.
+We live in a peaceful colony in Hyderabad.
+Our neighborhood is very friendly.
+We have good neighbors around us.
+We often celebrate festivals together.
+It feels like a second family.
+Apart from work, I have several hobbies.
+I love reading books.
+Especially books about technology and history.
+I also enjoy playing chess.
+It helps me improve my thinking ability.
+On weekends, I like to watch movies with my family.
+I am also interested in fitness.
+I go for a morning walk daily.
+Sometimes I also go to the gym.
+Maintaining health is very important to me.
+At my company, I work on backend systems.
+I mainly use C# and .NET technologies.
+I design scalable APIs.
+I enjoy solving complex technical problems.
+I also guide junior developers.
+Mentoring others gives me satisfaction.
+I believe knowledge should be shared.
+Work life can be busy at times.
+But I try to maintain balance.
+Family always comes first for me.
+We often go on vacations together.
+Last year, we visited Kerala.
+It was a beautiful experience.
+The backwaters were amazing.
+My parents still live in Jaipur.
+I visit them twice a year.
+I stay connected with them regularly.
+Family values are important in my life.
+In the future, I want to grow in my career.
+I aim to become an architect.
+I also want to build my own tech product someday.
+At the same time, I want to give my children a good education.
+I want them to follow their passions.
+Life has been a journey full of learning.
+I have faced challenges as well.
+But every challenge taught me something.
+I believe in staying positive.
+Hard work and consistency matter a lot.
+That’s my story in short.
+A simple person with simple dreams.
+Living life with family, work, and happiness.

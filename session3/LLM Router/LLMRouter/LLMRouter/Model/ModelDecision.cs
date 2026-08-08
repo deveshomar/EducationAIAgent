@@ -1,13 +1,13 @@
 ﻿namespace LLMRouter.Model
 {
-    public class ModelDecision
+   
+
+
+    public class ModelSelectionResponse
     {
-        public string Model { get; set; } = "";
-
-        public string Reason { get; set; } = "";
-
-        public string Complexity { get; set; } = "";
-
+        public string Model { get; set; } = string.Empty;
+        public string Reason { get; set; } = string.Empty;
+        public string Complexity { get; set; } = string.Empty;
         public double Confidence { get; set; }
     }
 }

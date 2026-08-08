@@ -1,0 +1,29 @@
+ ===============================CODE FLOW  LLM ROUTER==============================================
+
+Step1 :  Get API Key
+Step 2:  <PackageReference Include="OpenAI" Version="2.12.0" />
+Step 3: Create router service or router class   - LLM 1 Call
+        i)  Define Chat client 
+        ii)  Pass api key
+        iii) Pass system prompt and user query
+        iv) get result in specified format
+
+step 4
+     i) LLL 2 Call
+     iii) Take model name from step 3
+     iv) create OpenService class 
+     iv) Create Chat client 
+     v) Make API call and PAss models + user prompt
+
+======================================================================================================
+
+Step 5 Extension email
+
+     Email Write on this.
+     LLM Call + Answer from Step 4 
+
+step 6 email
+
+
+
+

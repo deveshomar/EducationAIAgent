@@ -11,7 +11,7 @@ public class RouterService
         _apiKey = configuration["OpenAI:ApiKey"]!;
     }
 
-    public async Task<string> DecideAsync(string prompt)
+    public async Task<ModelSelectionResponse> DecideAsync(string prompt)
     {
         var client = new ChatClient("gpt-5-nano", _apiKey);
 
@@ -65,14 +65,23 @@ public class RouterService
         var response = await client.CompleteChatAsync(messages);
 
         string json = response.Value.Content[0].Text;
-        var options = new JsonSerializerOptions
+
+    var result = JsonSerializer.Deserialize<ModelSelectionResponse>(
+    json,
+    new JsonSerializerOptions
+    {
+        PropertyNameCaseInsensitive = true
+    });
+
+        if (result != null)
         {
-            PropertyNameCaseInsensitive = true
-        };
+            Console.WriteLine($"Selected Model: {result.Model}");
 
-        // ModelDecision decision = response.Value.GetOutput<ModelDecision>();
-
-        //  return JsonSerializer.Deserialize<ModelDecision>(json)!;
-        return json;
+            if (result.Confidence >= 0.90)
+            {
+                Console.WriteLine("High confidence model selection.");
+            }
+        }
+        return result;
     }
 }

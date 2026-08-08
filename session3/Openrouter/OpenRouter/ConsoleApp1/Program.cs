@@ -1,9 +1,11 @@
-﻿using System;
+﻿using OpenRouter;
+using System;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 
-var apiKey = "s";
+var apiKey = "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";
+
 var url = "https://openrouter.ai/api/v1/chat/completions";
 
 using var client = new HttpClient();
@@ -16,14 +18,15 @@ var request = new
 {
     //model = "openai/gpt-4.1-mini",
     // model: "openrouter/auto",
-    model = "google/gemini-2.5-pro",
+   // model = "google/gemini-2.5-pro",
+     model= "openrouter/auto",
     messages = new[]
     {
         new
         {
             role = "user",
-            content = "Tell me five facts about India."
-        }
+            content=Prompttemplate.simplePrompt
+          }
     },
 
     temperature = 0.7,
