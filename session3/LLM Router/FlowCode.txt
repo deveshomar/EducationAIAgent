@@ -2,8 +2,8 @@
 
 Step1 :  Get API Key
 Step 2:  <PackageReference Include="OpenAI" Version="2.12.0" />
-Step 3: Create router service or router class   - LLM 1 Call
-        i)  Define Chat client 
+Step 3: Create router service or router class   - LLM 1 Call   (nano models, free models)
+        i)   Define Chat client 
         ii)  Pass api key
         iii) Pass system prompt and user query
         iv) get result in specified format

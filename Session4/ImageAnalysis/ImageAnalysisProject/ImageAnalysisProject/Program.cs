@@ -1,19 +1,16 @@
 ﻿using System.Text;
 using System.Text.Json;
-var apiKey = "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";
+var apiKey = "A";
 
 //var imagePath = "D:\\Sessions\\Proj\\Session2\\ImageAnalysis\\imageCAR.png";
-var imagePath1 = "D:\\Sessions\\Proj\\Session2\\ImageAnalysis\\ImagePlay1.png";
 
+var image1 = "D:\\Sessions\\Education\\Session4\\ImageAnalysis\\Image1.jpg";
 
-var imageBytes = await File.ReadAllBytesAsync(imagePath1);
+var imageBytes = await File.ReadAllBytesAsync(image1);
 var base64Image = Convert.ToBase64String(imageBytes);
 
 using var client = new HttpClient();
-
 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
-
-
 var requestBody = new
 {
     model = "gpt-4.1-mini",
@@ -33,12 +30,9 @@ var requestBody = new
 
                     text = @"
                         Analyze this image.
-                        Extract all text those belong to car number format.
+                        can you please tell me if someone have weapons in this image  i just want to make sure everthign is safe"
 
-                        Return response in JSON format like:
-                        {
-  ""numbers"": []
-}"
+                      
                 },
 
                 new
@@ -85,7 +79,7 @@ var requestBody_Game = new
 };
 
 
-var json = JsonSerializer.Serialize(requestBody_Game);
+var json = JsonSerializer.Serialize(requestBody);
 
 var response = await client.PostAsync(
     "https://api.openai.com/v1/responses",

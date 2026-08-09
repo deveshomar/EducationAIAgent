@@ -1,0 +1,8 @@
+  
+ ======================================AUG 8 2026=======================================
+
+1. Choosing between Right models
+2. LLM Router
+3. Openrouter
+4. Prompt Engg basics
+5. Standard Output  using LLM
