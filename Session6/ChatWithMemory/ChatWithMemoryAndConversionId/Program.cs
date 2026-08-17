@@ -3,7 +3,6 @@
 //using OpenAI.Chat;
 //using System.Text.Json;
 
-//var apiKey = "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";
 
 
 //var client = new ChatClient(
