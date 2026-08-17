@@ -1,0 +1,14 @@
+ 
+ =============AUG 08=====================================
+
+1. How to choose between models
+2. Will learn how OpenRouter
+3. Will learn about LLM Model Router
+
+ =============AUG 09=====================================
+
+
+   a. Prompt Engg
+   b. Image Analysis
+   c. Web search from openai
+   d. Chat with memmory

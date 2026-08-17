@@ -28,14 +28,14 @@ ResponsesClient client = new ResponsesClient(
 // 3. Create Web Search Options
 // =====================================================
 
-var options = new CreateResponseOptions
+var requestBody = new CreateResponseOptions
 {
     Model = "gpt-5",
 
-    Tools =
-    {
-        ResponseTool.CreateWebSearchTool()
-    }
+    //Tools =
+    //{
+    //    ResponseTool.CreateWebSearchTool()
+    //}
 };
 
 // =====================================================
@@ -78,16 +78,16 @@ while (true)
         // 5. Create User Message
         // =================================================
 
-        options.InputItems.Clear();
+        requestBody.InputItems.Clear();
 
-        options.InputItems.Add(
+        requestBody.InputItems.Add(
             ResponseItem.CreateUserMessageItem(
                 userInput
             )
         );
 
         Console.WriteLine();
-        Console.WriteLine("Searching the web...");
+        Console.WriteLine("Calling Open AI......");
         Console.WriteLine();
 
         // =================================================
@@ -95,7 +95,7 @@ while (true)
         // =================================================
 
         ResponseResult response =
-            await client.CreateResponseAsync(options);
+            await client.CreateResponseAsync(requestBody);
 
         // =================================================
         // 7. Display Answer
