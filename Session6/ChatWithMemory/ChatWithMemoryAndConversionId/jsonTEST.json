@@ -1,0 +1,44 @@
+[
+  {
+    "ConversationId": "TEST",
+    "Role": "system",
+    "Content": "You are a helpful AI assistant.",
+    "CreatedDate": "2026-08-15T04:33:57.0787318-07:00"
+  },
+  {
+    "ConversationId": "TEST",
+    "Role": "user",
+    "Content": "hello",
+    "CreatedDate": "2026-08-15T04:34:02.0417549-07:00"
+  },
+  {
+    "ConversationId": "TEST",
+    "Role": "assistant",
+    "Content": "Hello! How can I help you today?",
+    "CreatedDate": "2026-08-15T04:34:04.6455422-07:00"
+  },
+  {
+    "ConversationId": "TEST",
+    "Role": "user",
+    "Content": "tell me whtai can do for you",
+    "CreatedDate": "2026-08-15T04:34:14.887628-07:00"
+  },
+  {
+    "ConversationId": "TEST",
+    "Role": "assistant",
+    "Content": "I can help you with things like:\n\n- Answering questions and explaining topics\n- Writing, editing, or improving text\n- Summarizing articles, notes, or documents\n- Brainstorming ideas\n- Helping with emails, resumes, essays, and reports\n- Coding help and debugging\n- Planning trips, schedules, or projects\n- Learning languages or practicing conversation\n- Solving math or logic problems\n- Giving general advice and step-by-step guidance\n\nTell me what you need help with, and I\u2019ll do my best.",
+    "CreatedDate": "2026-08-15T04:34:17.9018094-07:00"
+  },
+  {
+    "ConversationId": "TEST",
+    "Role": "user",
+    "Content": "write one program ",
+    "CreatedDate": "2026-08-15T04:34:25.710763-07:00"
+  },
+  {
+    "ConversationId": "TEST",
+    "Role": "assistant",
+    "Content": "Sure \u2014 what kind of program do you want?\n\nFor example:\n1. Calculator  \n2. To-do list  \n3. Student marks system  \n4. Guess the number game  \n5. Login system  \n6. Website page  \n7. Any other idea\n\nAlso tell me the language: **Python, Java, C, C\u002B\u002B, JavaScript**, etc.\n\nExample simple Python program:\n\n\u0060\u0060\u0060python\nname = input(\u0022Enter your name: \u0022)\nprint(\u0022Hello\u0022, name, \u0022welcome to programming!\u0022)\n\u0060\u0060\u0060\n\nTell me what program you want, and I\u2019ll write it for you.",
+    "CreatedDate": "2026-08-15T04:34:28.4723543-07:00"
+  }
+]

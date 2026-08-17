@@ -1,0 +1,16 @@
+[
+
+  
+  {
+    "ConversationId": "001-990-09902-40",
+    "Role": "user",
+    "Content": "Devesh is a tech professional.",
+    "CreatedDate": "2026-08-15T23:03:55.2495412-07:00"
+  },
+  {
+    "ConversationId": "001-990-09902-40",
+    "Role": "assistant",
+    "Content": "Sure, Devesh. Here is a simple **C# example to call an LLM API** using \u0060HttpClient\u0060.\n\nThis example uses an **OpenAI-compatible Chat Completions API**.\n\n### C# Console App Example\n\n\u0060\u0060\u0060csharp\nusing System;\nusing System.Net.Http;\nusing System.Text;\nusing System.Text.Json;\nusing System.Threading.Tasks;\n\nclass Program\n{\n    static async Task Main()\n    {\n        string apiKey = Environment.GetEnvironmentVariable(\u0022OPENAI_API_KEY\u0022);\n\n        if (string.IsNullOrEmpty(apiKey))\n        {\n            Console.WriteLine(\u0022Please set OPENAI_API_KEY environment variable.\u0022);\n            return;\n        }\n\n        using var client = new HttpClient();\n\n        client.DefaultRequestHeaders.Add(\u0022Authorization\u0022, $\u0022Bearer {apiKey}\u0022);\n\n        var requestBody = new\n        {\n            model = \u0022gpt-4o-mini\u0022,\n            messages = new[]\n            {\n                new\n                {\n                    role = \u0022system\u0022,\n                    content = \u0022You are a helpful assistant.\u0022\n                },\n                new\n                {\n                    role = \u0022user\u0022,\n                    content = \u0022Explain what an LLM is in simple words.\u0022\n                }\n            },\n            temperature = 0.7\n        };\n\n        string json = JsonSerializer.Serialize(requestBody);\n\n        var content = new StringContent(json, Encoding.UTF8, \u0022application/json\u0022);\n\n        HttpResponseMessage response = await client.PostAsync(\n            \u0022https://api.openai.com/v1/chat/completions\u0022,\n            content\n        );\n\n        string responseJson = await response.Content.ReadAsStringAsync();\n\n        if (!response.IsSuccessStatusCode)\n        {\n            Console.WriteLine(\u0022Error:\u0022);\n            Console.WriteLine(responseJson);\n            return;\n        }\n\n        using JsonDocument doc = JsonDocument.Parse(responseJson);\n\n        string answer = doc\n            .RootElement\n            .GetProperty(\u0022choices\u0022)[0]\n            .GetProperty(\u0022message\u0022)\n            .GetProperty(\u0022content\u0022)\n            .GetString();\n\n        Console.WriteLine(\u0022LLM Response:\u0022);\n        Console.WriteLine(answer);\n    }\n}\n\u0060\u0060\u0060\n\n### Set API Key\n\nOn Windows PowerShell:\n\n\u0060\u0060\u0060powershell\nsetx OPENAI_API_KEY \u0022your_api_key_here\u0022\n\u0060\u0060\u0060\n\nOn Linux/macOS:\n\n\u0060\u0060\u0060bash\nexport OPENAI_API_KEY=\u0022your_api_key_here\u0022\n\u0060\u0060\u0060\n\n### Example Output\n\n\u0060\u0060\u0060text\nLLM Response:\nAn LLM, or Large Language Model, is an AI system that can understand and generate human-like text...\n\u0060\u0060\u0060\n\nIf you want, I can also share a **C# example using Azure OpenAI**, **Semantic Kernel**, or a **streaming response example**.",
+    "CreatedDate": "2026-08-15T23:04:43.6934952-07:00"
+  }
+]

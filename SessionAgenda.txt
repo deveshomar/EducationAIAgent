@@ -1,0 +1,15 @@
+ 
+ =============AUG 08=====================================
+
+1. How to choose between models
+2. Will learn how OpenRouter
+3. Will learn about LLM Model Router
+
+ =============AUG 09=====================================
+   1. Prompt Engg
+   3. Web search from openai
+
+=================AUG 15================================
+
+1. Genertiave AI exmaple -> Structured Output ->  Extract Data from invoice
+2. All ways to communicate 

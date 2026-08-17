@@ -1,0 +1,70 @@
+
+
+===========================First Turn
+User :  Hi
+Reponse: How i can help
+
+============================Second Turn
+User :  Hi
+Reponse: How i can help
+       +
+User : i have my brother he need to prepare for IAS can you suggest how he can plan
+Reponse :  your brother can plan like ........step1 step 2 step 3 step 4 step 5
+
+==============================ThridTurn
+
+User :  Hi
+Reponse: How i can help
+User : i have my brother he need to prepare for IAS can you suggest how he can plan
+Reponse :  your brother can plan like ........step1 step 2 step 3 step 4 step 5
+       + 
+User : now can you tell me similar option insted of preparing this 
+Repnse:  Correspondingle he can prepaer for PCS that also have same pattern
+
+=============================fourth Turn
+
+User :  Hi
+Reponse: How i can help
+User : i have my brother he need to prepare for IAS can you suggest how he can plan
+Reponse :  your brother can plan like ........step1 step 2 step 3 step 4 step 5
+       + 
+User : now can you tell me similar option insted of preparing this 
+Repnse:  Correspondingle he can prepaer for PCS that also have same pattern
+
+===========================fifth
+
+User :  Hi
+Reponse: How i can help
+User : i have my brother he need to prepare for IAS can you suggest how he can plan
+Reponse :  your brother can plan like ........step1 step 2 step 3 step 4 step 5
+       + 
+User : now can you tell me similar option insted of preparing this 
+Repnse:  Correspondingle he can prepaer for PCS that also have same pattern
+
+User :  ABCD........................
+Response : PQRS...................
+
+==========================sixth
+
+
+User :  Hi
+Reponse: How i can help
+User : i have my brother he need to prepare for IAS can you suggest how he can plan
+Reponse :  your brother can plan like ........step1 step 2 step 3 step 4 step 5
+       + 
+User : now can you tell me similar option insted of preparing this 
+Repnse:  Correspondingle he can prepaer for PCS that also have same pattern
+
+User :  ABCD........................
+Response : PQRS...................
+
++  
+
+User :  ca  you give me code
+Response : yes sure
+
+
+
+
+
+

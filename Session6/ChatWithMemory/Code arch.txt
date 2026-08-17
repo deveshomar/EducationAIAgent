@@ -1,0 +1,44 @@
+
+
+   Arch of Applicaiton
+ =========================================
+
+When Conversation Found
+
+  a.  Login User
+  b.  Go to Db and check if any Cnversion Done yet
+  c. ConversionID Found
+  d. Load All conversioation
+  e. Continue Chat 
+  f. User Ask -> Get REponse -> add reponse to DB with Same ConversationID
+  h. Next Question-> Keep Sending History to LLM each after all quesitons.
+ 
+
+When Conversation not found
+  a.  Login User
+  b.  Go to Db and check if any Cnversion Done yet
+  c. ConversionID Not Found
+  d. Fresh Converation Started
+  e. Save to DB anout ConversionID and User Details
+  g. start adding Conversation
+
+
+  =====================Conversation Table
+
+ ConversationID
+ Date
+ ResponseorContent
+ Role: System, User, Assistance
+
+  
+when we do conversation AI need to userstand Type of message
+a Role : AI must know who send this msessage
+         System: its system instructions 
+         User:  user quesiton
+          Assistace LLM response    
+ 
+
+ 
+
+
+
