@@ -5,8 +5,8 @@
 
 When Conversation Found
 
-  a.  Login User
-  b.  Go to Db and check if any Cnversion Done yet
+  a. Login User
+  b. Go to Db and check if any Cnversion Done yet
   c. ConversionID Found
   d. Load All conversioation
   e. Continue Chat 
@@ -35,7 +35,35 @@ when we do conversation AI need to userstand Type of message
 a Role : AI must know who send this msessage
          System: its system instructions 
          User:  user quesiton
-          Assistace LLM response    
+          Assistace LLM response   
+
+
+
+        | ConversationId | Role      | Content
+	------------------------------------------
+        | 101            | user      | What is an agent?
+        | 101            | assistant | An AI agent...
+        | 101            | user      | How does tool calling work?
+        | 101            | assistant | Tool calling... 
+        | 101            | User      | can you tell me who i am. 
+         | 101            | assistant |you are senior arch in some comant
+
+
+        
+
+User
+ |
+ +-- Conversation 101
+ |      "Learning GenAI"
+ |
+ +-- Conversation 102
+ |      "Invoice extraction"
+ |
+ +-- Conversation 103
+ |      "C# project"
+ |
+ +-- Conversation 104
+        "Travel planning"
  
 
  

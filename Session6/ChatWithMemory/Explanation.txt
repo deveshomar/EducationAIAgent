@@ -65,6 +65,27 @@ Response : yes sure
 
 
 
+===============================================================================
+
+Sending all Last messages every time causes:
+
+High token usage
+Higher cost
+Slower response
+Context-window problems
+Irrelevant old information
+More difficult history management
+Hallunication 
+
+
+1. Sliding Window ->  Top 50 only 
+2. Summarise Chat and Send
+
+
+
+
+
+
 
 
 
