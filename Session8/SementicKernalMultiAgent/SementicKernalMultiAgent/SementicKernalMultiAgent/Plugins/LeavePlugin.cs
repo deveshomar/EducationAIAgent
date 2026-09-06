@@ -45,7 +45,7 @@ public class LeavePlugin
     }
 
     [KernelFunction]
-    [Description("Apply leave for an employee")]
+    [Description("Apply leave for an employee, please check leave balance before applying leave")]
     public string ApplyLeave(
         [Description("Employee ID")] int employeeId,
         [Description("Leave start date")] string fromDate,

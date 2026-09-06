@@ -7,16 +7,16 @@ string apiKey = "";
 var supervisor = new SupervisorAgent(apiKey);
 
 var employeeAgent =
-    AgentFactory.CreateEmployeeAgent(apiKey);
+    AgentBuilder.CreateEmployeeAgent(apiKey);
 
 var leaveAgent =
-    AgentFactory.CreateLeaveAgent(apiKey);
+    AgentBuilder.CreateLeaveAgent(apiKey);
 
 var payrollAgent =
-    AgentFactory.CreatePayrollAgent(apiKey);
+    AgentBuilder.CreatePayrollAgent(apiKey);
 
 var itAgent =
-    AgentFactory.CreateITAgent(apiKey);
+    AgentBuilder.CreateITAgent(apiKey);
 
 Console.WriteLine("====================================");
 Console.WriteLine("       MULTI AGENT EMPLOYEE APP");
@@ -46,8 +46,7 @@ while (true)
 
     var settings = new OpenAIPromptExecutionSettings
     {
-        FunctionChoiceBehavior =
-            FunctionChoiceBehavior.Auto()
+        FunctionChoiceBehavior =  FunctionChoiceBehavior.Auto()
     };
 
     string response;

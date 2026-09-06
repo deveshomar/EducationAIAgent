@@ -1,7 +1,7 @@
 ﻿using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
-public static class AgentFactory
+public static class AgentBuilder
 {
     public static Kernel CreateEmployeeAgent(
         string apiKey)
