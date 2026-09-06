@@ -1,0 +1,31 @@
+                    Employee
+                        │
+                        ▼
+               Supervisor Agent  (can you please provid me status of salary )   - ITAgent
+                        │
+        ┌───────────────┼───────────────┐
+        ▼               ▼               ▼
+   Payroll Agent   Leave Agent     IT Agent
+        │               │               │
+        ▼               ▼               ▼
+ Payroll Kernel    Leave Kernel    IT Kernel
+        │               │               │
+ PayrollPlugin    LeavePlugin      ITPlugin
+        │               │               │
+ Payroll API      Leave DB      ServiceNow / AD
+
+
+
+Employee
+    │
+    ▼
+Supervisor Agent (Kernel 1)
+    │
+    ├──────────────┬───────────────┬──────────────┐
+    ▼              ▼               ▼              ▼
+Payroll Agent   Leave Agent     HR Agent      IT Agent
+(Kernel 2)      (Kernel 3)      (Kernel 4)    (Kernel 5)
+    │              │               │              │
+PayrollPlugin   LeavePlugin    HrPlugin      ItPlugin
+    │              │               │              │
+Payroll API     Leave DB       HR API       ServiceNow API
