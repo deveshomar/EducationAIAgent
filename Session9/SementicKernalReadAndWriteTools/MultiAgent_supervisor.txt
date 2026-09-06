@@ -1,0 +1,20 @@
+                         USER
+                           │
+                           ▼
+                 ┌──────────────────┐
+                 │ SUPERVISOR AGENT │
+                 │                  │
+                 │ Decide which     │
+                 │ agent to use     │
+                 └────────┬─────────┘
+                          │
+          ┌─────────────Switch────────────────┐
+          │               │                │
+          ▼               ▼                ▼
+   ┌────────────┐  ┌────────────┐  ┌────────────┐
+   │  EMPLOYEE  │  │   LEAVE    │  │  PAYROLL   │
+   │   AGENT    │  │   AGENT    │  │   AGENT    │
+   └─────┬──────┘  └─────┬──────┘  └─────┬──────┘
+         │               │                │
+         ▼               ▼                ▼
+      Tools           Tools            Tools GetSalary

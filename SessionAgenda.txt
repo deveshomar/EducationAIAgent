@@ -13,3 +13,6 @@
 
 1. Genertiave AI exmaple -> Structured Output ->  Extract Data from invoice
 2. All ways to communicate 
+
+====================AUG 29================
+
