@@ -1,0 +1,41 @@
+﻿HR Leave Policy
+
+Employees receive 24 annual leaves every calendar year.
+
+Casual leave balance is 12.
+
+Sick leave balance is 12.
+
+Unused casual leaves cannot be carried forward.
+
+----------------------------------------
+
+Salary Policy
+
+Salary is credited on the last working day of every month.
+
+Salary slips are available on the employee portal.
+
+Tax deductions follow government regulations.
+
+----------------------------------------
+
+IT Help Desk
+
+For password reset contact extension 1001.
+
+Laptop issues should be reported through ServiceNow.
+
+VPN access requests require manager approval.
+
+Email issues can be reported to ithelp@company.com.
+
+----------------------------------------
+
+Travel Policy
+
+Employees can claim hotel expenses.
+
+Manager approval is mandatory before booking flights.
+
+Travel reimbursement should be submitted within 15 days.

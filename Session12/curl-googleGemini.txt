@@ -1,0 +1,12 @@
+curl https://api.openai.com/v1/embeddings ^
+  -H "Authorization: Bearer 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" ^
+  -H "Content-Type: application/json" ^
+  -d "{\"model\":\"text-embedding-3-small\",\"input\":\"How do I reset my password?\"}"
+
+
+
+
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent" ^
+-H "Content-Type: application/json" ^
+-H "x-goog-api-key: AIzaSyACrSYnPwYs4F_XG9f0e35GeO8V77glFKk" ^
+-d "{\"taskType\":\"SEMANTIC_SIMILARITY\",\"content\":{\"parts\":[{\"text\":\"What is the meaning of life?\"},{\"text\":\"How much wood would a woodchuck chuck?\"},{\"text\":\"How does the brain work?\"}]}}"

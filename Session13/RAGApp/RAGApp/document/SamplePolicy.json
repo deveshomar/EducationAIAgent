@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "Text": "Employees receive 24 annual leaves every calendar year."
+  },
+  {
+    "Id": 2,
+    "Text": "Casual leave balance is 12."
+  },
+  {
+    "Id": 3,
+    "Text": "Sick leave balance is 12."
+  },
+  {
+    "Id": 4,
+    "Text": "Unused casual leaves cannot be carried forward."
+  },
+  {
+    "Id": 5,
+    "Text": "Salary is credited on the last working day of every month."
+  },
+  {
+    "Id": 6,
+    "Text": "Salary slips are available on the employee portal."
+  },
+  {
+    "Id": 7,
+    "Text": "Tax deductions follow government regulations."
+  },
+  {
+    "Id": 8,
+    "Text": "For password reset contact extension 1001."
+  },
+  {
+    "Id": 9,
+    "Text": "Laptop issues should be reported through ServiceNow."
+  },
+  {
+    "Id": 10,
+    "Text": "VPN access requests require manager approval."
+  },
+  {
+    "Id": 11,
+    "Text": "Email issues can be reported to ithelp@company.com."
+  },
+  {
+    "Id": 12,
+    "Text": "Employees can claim hotel expenses."
+  },
+  {
+    "Id": 13,
+    "Text": "Manager approval is mandatory before booking flights."
+  },
+  {
+    "Id": 14,
+    "Text": "Travel reimbursement should be submitted within 15 days."
+  }
+]
