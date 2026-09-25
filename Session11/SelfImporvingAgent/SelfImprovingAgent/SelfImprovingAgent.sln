@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfImprovingAgent", "SelfImprovingAgent\SelfImprovingAgent.csproj", "{C35B3CDA-F68D-4507-9F73-6503CE135444}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C35B3CDA-F68D-4507-9F73-6503CE135444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35B3CDA-F68D-4507-9F73-6503CE135444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35B3CDA-F68D-4507-9F73-6503CE135444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35B3CDA-F68D-4507-9F73-6503CE135444}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95F3E2EA-3CEF-493C-84AC-057AEE5E6432}
+	EndGlobalSection
+EndGlobal

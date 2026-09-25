@@ -1,0 +1,10 @@
+==================================Session Agenda============================
+
+
+a. Self imporving Design pattern
+b. Sequential Agent Calls
+c. Critic design pattern
+d. LLM as judge
+d. React Design Pattern
+
+
