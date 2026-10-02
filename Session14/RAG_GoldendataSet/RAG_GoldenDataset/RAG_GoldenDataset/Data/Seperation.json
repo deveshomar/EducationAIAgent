@@ -1,0 +1,282 @@
+[
+  {
+    "id": 66,
+    "question": "How many days of notice must I serve before resigning?",
+    "expectedAnswer": "The exact number of notice days is not specified in this section. The applicable notice period depends on the employment agreement and company policy.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 67,
+    "question": "Is the notice period 30 days for all employees?",
+    "expectedAnswer": "This section does not specify a universal 30-day notice period.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 68,
+    "question": "Can I resign with only one week's notice?",
+    "expectedAnswer": "This section does not specify whether one week's notice is sufficient. The applicable notice period depends on the employment agreement and company policy.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 69,
+    "question": "What is the notice period for employees with less than one year of service?",
+    "expectedAnswer": "This section does not define notice periods based on length of service.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 70,
+    "question": "Do managers have a longer notice period than other employees?",
+    "expectedAnswer": "This section does not specify different notice periods based on job level or management status.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 71,
+    "question": "Does the notice period increase after five years of employment?",
+    "expectedAnswer": "This section does not state that the notice period changes based on years of service.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 72,
+    "question": "Can I use my remaining vacation days to reduce my notice period?",
+    "expectedAnswer": "This section does not state whether unused vacation can be used to reduce the notice period.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 73,
+    "question": "Will the company pay me instead of requiring me to serve the notice period?",
+    "expectedAnswer": "This section does not address payment in lieu of serving the notice period.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 74,
+    "question": "Can the company force me to complete my entire notice period?",
+    "expectedAnswer": "This section does not explain whether the company can require an employee to complete the entire notice period.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 75,
+    "question": "What happens if I leave without serving my notice period?",
+    "expectedAnswer": "This section does not specify the consequences of leaving without completing the notice period.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 76,
+    "question": "Will there be a salary deduction if I do not complete my notice period?",
+    "expectedAnswer": "This section does not specify any salary deduction or financial consequence for not completing the notice period.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 77,
+    "question": "Can my notice period be extended if my manager does not approve my resignation?",
+    "expectedAnswer": "This section does not explain whether a notice period can be extended because of resignation approval.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 78,
+    "question": "How long does HR take to approve an early release?",
+    "expectedAnswer": "This section requires appropriate management and HR approval for early release but does not specify an approval timeline.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 79,
+    "question": "What criteria does HR use to approve early release?",
+    "expectedAnswer": "The section requires appropriate management and HR approval but does not specify the criteria used for approval.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 80,
+    "question": "Is early release automatically approved if my manager agrees?",
+    "expectedAnswer": "This section does not say that manager approval alone automatically results in early release. It states that appropriate management and HR approval are required.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 81,
+    "question": "Can HR reject my request for early release?",
+    "expectedAnswer": "The section requires HR and management approval but does not specify the circumstances under which an early-release request may be rejected.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 82,
+    "question": "How many days can management reduce my notice period?",
+    "expectedAnswer": "This section does not specify how many days management can reduce the notice period.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 83,
+    "question": "Can HR waive my entire notice period?",
+    "expectedAnswer": "The section addresses early release requiring management and HR approval but does not specify whether the entire notice period can be waived.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 84,
+    "question": "What happens to my benefits during the notice period?",
+    "expectedAnswer": "This section does not address employee benefits during the notice period.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 85,
+    "question": "Will my health insurance continue during my notice period?",
+    "expectedAnswer": "This section does not provide information about health insurance coverage during the notice period.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 86,
+    "question": "Will I receive my bonus if I resign during the notice period?",
+    "expectedAnswer": "This section does not address bonus eligibility after resignation.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 87,
+    "question": "Can I work from home while serving my notice period?",
+    "expectedAnswer": "This section does not address work-from-home arrangements during the notice period.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Medium"
+  },
+  {
+    "id": 88,
+    "question": "Can I take sick leave while serving my notice period?",
+    "expectedAnswer": "This section does not specify rules regarding sick leave during the notice period.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Medium"
+  },
+  {
+    "id": 89,
+    "question": "Do I have to train my replacement during my notice period?",
+    "expectedAnswer": "This section does not address responsibilities related to training a replacement.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 90,
+    "question": "When will I receive my final settlement after completing my notice?",
+    "expectedAnswer": "This section does not specify the timing of final settlement.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 91,
+    "question": "Will I receive a relieving letter after serving my notice?",
+    "expectedAnswer": "This section does not address relieving letters.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Medium"
+  },
+  {
+    "id": 92,
+    "question": "Can I join another company while serving my current notice period?",
+    "expectedAnswer": "This section does not address whether an employee can join another company while serving notice.",
+    "relevantChunkIds": [],
+    "category": "OutOfScope",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 93,
+    "question": "Can I resign while I am on probation?",
+    "expectedAnswer": "This section does not specify notice-period rules for employees on probation.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 94,
+    "question": "What is the notice period during probation?",
+    "expectedAnswer": "This section does not specify a separate notice period for employees on probation.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 95,
+    "question": "Does notice period depend on my job title?",
+    "expectedAnswer": "This section does not state that the notice period depends on job title. It states that the applicable period is determined by the employment agreement and company policy.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 96,
+    "question": "Does notice period depend on my salary level?",
+    "expectedAnswer": "This section does not specify that notice period depends on salary level.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 97,
+    "question": "Can I resign immediately because of a personal emergency?",
+    "expectedAnswer": "This section does not specify whether personal emergencies allow an employee to leave immediately.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 98,
+    "question": "What legal requirements apply to my notice period?",
+    "expectedAnswer": "This section refers to applicable company policy and the employment agreement but does not specify particular legal requirements.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 99,
+    "question": "What happens if my employer refuses to release me early?",
+    "expectedAnswer": "This section does not specify what happens if an early-release request is not approved.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  },
+  {
+    "id": 100,
+    "question": "Can I appeal if my early-release request is rejected?",
+    "expectedAnswer": "This section does not describe an appeal process for an early-release decision.",
+    "relevantChunkIds": [ "SEPARATION-02" ],
+    "category": "InsufficientInformation",
+    "difficulty": "Hard"
+  }
+]

@@ -1,0 +1,286 @@
+﻿GLOBAL CORPORATE EMPLOYEE POLICY HANDBOOK
+
+==================================================
+SECTION HR-01: GENERAL HR POLICY
+==================================================
+
+All full-time permanent employees must complete mandatory employee
+onboarding within their first ten business days.
+
+Employees must keep their personal information, emergency contact
+details, bank information, and residential address updated in the
+HR Portal.
+
+Employees are expected to maintain professional conduct, protect
+confidential company information, and follow all applicable company
+policies.
+
+Employees who change their legal name or other important personal
+information must update the HR Portal within thirty days.
+
+Managers are responsible for conducting regular one-on-one meetings
+with their direct reports and completing required performance reviews.
+
+==================================================
+SECTION HR-02: WORKING HOURS AND ATTENDANCE
+==================================================
+
+The standard working schedule is Monday through Friday.
+
+Employees are expected to work eight hours per business day unless
+their employment agreement specifies a different schedule.
+
+Employees must record attendance using the company's approved
+attendance system.
+
+If an employee is unable to attend work because of an unexpected
+emergency, the employee should notify their manager as soon as
+reasonably possible.
+
+Repeated unexplained attendance issues may be escalated to HR.
+
+==================================================
+SECTION LEAVE-01: ANNUAL LEAVE POLICY
+==================================================
+
+Full-time permanent employees receive twenty days of paid annual
+leave per calendar year.
+
+Annual leave is accrued monthly.
+
+Employees may carry forward a maximum of five unused annual leave
+days into the following calendar year.
+
+Unused carried-forward leave expires on March 31.
+
+Leave requests exceeding three consecutive business days must be
+submitted at least two weeks in advance through the HR Portal.
+
+Managers are responsible for approving or rejecting leave requests.
+
+==================================================
+SECTION LEAVE-02: SICK LEAVE POLICY
+==================================================
+
+Employees receive ten paid sick leave days per calendar year.
+
+Sick leave may be used for the employee's personal illness or
+family medical care.
+
+Employees should notify their manager as soon as possible when
+they are unable to work because of illness.
+
+Medical documentation may be requested by HR when required under
+applicable company procedures.
+
+Sick leave cannot be exchanged for cash.
+
+==================================================
+SECTION LEAVE-03: SPECIAL LEAVE
+==================================================
+
+Employees may request special leave for approved personal or
+family circumstances.
+
+Special leave requires manager approval and may require HR approval
+depending on the type and duration of leave.
+
+Employees should submit special leave requests through the HR Portal.
+
+==================================================
+SECTION IT-01: IT HELP DESK POLICY
+==================================================
+
+Employees should contact the IT Help Desk for company laptop,
+desktop, software, network, VPN, email, and approved application
+issues.
+
+Employees should provide a clear description of the issue,
+relevant screenshots when available, and the asset number when
+reporting a hardware problem.
+
+The IT Help Desk assigns a priority to each incident based on
+business impact and urgency.
+
+Critical incidents affecting a large number of employees may be
+escalated to the IT infrastructure team.
+
+Employees must not install unauthorized software on company
+devices.
+
+==================================================
+SECTION IT-02: PASSWORD AND ACCOUNT ISSUES
+==================================================
+
+Employees who forget their corporate password should use the
+approved password-reset process or contact the IT Help Desk.
+
+Employees must never share their corporate password with another
+person.
+
+If an employee suspects that their account has been compromised,
+they must immediately contact the IT Help Desk and Information
+Security.
+
+Multi-factor authentication must remain enabled for corporate
+accounts where required.
+
+==================================================
+SECTION IT-03: HARDWARE AND DEVICE ISSUES
+==================================================
+
+Engineering employees are issued a primary company workstation.
+
+Supported workstation options include a 16-inch M-Series MacBook Pro
+and a Dell XPS 15 workstation.
+
+Hardware replacement or refresh normally occurs every three years
+or when a hardware failure is verified by the IT Help Desk.
+
+Dual 27-inch 4K monitors, external keyboards, and ergonomic mice
+may be provided upon request.
+
+Lost, stolen, or damaged company devices must be reported to
+IT Security within two hours of discovery.
+
+==================================================
+SECTION IT-04: REMOTE WORK TECHNICAL SUPPORT
+==================================================
+
+Employees working remotely should contact the IT Help Desk when
+experiencing VPN connectivity, corporate Wi-Fi, authentication,
+remote desktop, or approved collaboration-tool issues.
+
+Employees should provide the time the problem started and the
+error message when submitting a remote-work technical incident.
+
+==================================================
+SECTION SALARY-01: SALARY POLICY
+==================================================
+
+Employee salaries are paid monthly.
+
+Salary payments are normally deposited into the employee's
+registered bank account.
+
+Employees must keep their bank account information updated in the
+HR Portal.
+
+Salary slips are made available through the employee self-service
+portal.
+
+Employees should contact HR Payroll if they identify an incorrect
+salary payment or missing salary slip.
+
+==================================================
+SECTION SALARY-02: SALARY REVISION
+==================================================
+
+Salary revisions are based on company compensation processes,
+employee performance, role expectations, internal equity, and
+business considerations.
+
+A salary revision is not automatically guaranteed every year.
+
+Employees should discuss compensation questions with their manager
+or HR.
+
+==================================================
+SECTION SEPARATION-01: RESIGNATION POLICY
+==================================================
+
+Employees who wish to resign must submit a formal resignation
+through the company's approved resignation process.
+
+The resignation date and proposed last working day must be clearly
+specified.
+
+Employees should continue performing their normal responsibilities
+during the notice period unless otherwise instructed.
+
+==================================================
+SECTION SEPARATION-02: NOTICE PERIOD
+==================================================
+
+The applicable notice period is determined by the employee's
+employment agreement and applicable company policy.
+
+Employees should consult their employment agreement or HR when they
+are unsure about their applicable notice period.
+
+Early release from the notice period requires appropriate management
+and HR approval.
+
+==================================================
+SECTION SEPARATION-03: EXIT PROCESS
+==================================================
+
+Before the last working day, employees must return company property
+including laptops, access cards, security tokens, and other assigned
+equipment.
+
+Employees must complete knowledge transfer activities requested by
+their manager.
+
+IT will disable or remove access to company systems according to
+the separation process.
+
+HR will complete the required exit documentation and coordinate the
+exit process.
+
+==================================================
+SECTION SEPARATION-04: FINAL SETTLEMENT
+==================================================
+
+Final settlement includes applicable salary, approved reimbursements,
+and other amounts payable under company policy and the employee's
+employment agreement.
+
+The timing of final settlement depends on completion of required
+exit activities and applicable payroll processing.
+
+Employees should contact HR Payroll for questions regarding their
+final settlement.
+
+==================================================
+SECTION TRAVEL-01: BUSINESS TRAVEL
+==================================================
+
+All domestic and international business travel must be booked
+through the corporate travel portal at least fourteen days before
+departure.
+
+Domestic flights under six hours must be booked in Economy or
+Main Cabin class.
+
+Business class is permitted for continuous flights exceeding
+eight hours.
+
+==================================================
+SECTION EXPENSE-01: TRAVEL EXPENSES
+==================================================
+
+The maximum daily meal per diem is seventy-five US dollars.
+
+The meal allowance is fifteen dollars for breakfast, twenty-five
+dollars for lunch, and thirty-five dollars for dinner.
+
+Itemized receipts are mandatory for individual expense items
+exceeding twenty-five US dollars.
+
+Expense claims must be submitted within thirty days of travel
+completion.
+
+==================================================
+SECTION SECURITY-01: INFORMATION SECURITY
+==================================================
+
+Employees must protect confidential company information and must
+not share company credentials.
+
+Employees must immediately report suspected security incidents to
+Information Security.
+
+Company devices must use approved security controls and software.
+
+Employees must not disable required security protections.

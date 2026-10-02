@@ -1,0 +1,134 @@
+﻿=====================CRAG==============================
+
+Full-time permanent employees receive twenty days of paid annual
+leave per calendar year.
+
+Annual leave is accrued monthly.
+
+Employees may carry forward a maximum of five unused annual leave
+days into the following calendar year.
+
+Unused carried-forward leave expires on March 31.
+
+Leave requests exceeding three consecutive business days must be
+submitted at least two weeks in advance through the HR Portal.
+
+Managers are responsible for approving or rejecting leave requests.
+
+
+Q-
+What is my leave allowance?
+
+CRAG
+How many paid annual leave days does a full-time permanent employee receive per calendar year?
+
+
+Q-
+What happens if I don't use my leave?
+
+CRAG
+How many unused annual leave days can be carried forward and when does carried-forward leave expire?
+
+
+Q- I need a long vacation. What do I do?
+
+CRAG
+What is the advance notice requirement and submission process for leave exceeding three consecutive business days?
+
+
+Q- What about unused leave after the year?
+
+CRAG-
+What happens to unused annual leave after the calendar year,
+including the carry-forward limit and expiry date?
+
+
+                  SAME QUESTION
+                       │
+             ┌─────────┴─────────┐
+             │                   │
+        Normal RAG             CRAG
+             │                   │
+        Original Query       Correct Query
+             │                   │
+        Embedding             Embedding
+             │                   │
+        Vector Search         Vector Search
+             │                   │
+        Top K Chunks          Better Chunks
+             │                   │
+             └─────────┬─────────┘
+                       │
+                    Compare
+
+
+
+┌─────────────────────────┐
+│    User Question        │
+│ "What happens to my     │
+│      leave days?"       │
+└────────────┬────────────┘
+             ↓
+┌─────────────────────────┐
+│     CRAG Query Rewrite  │
+│                         │
+│ "What happens to unused │
+│ annual leave days at    │
+│ the end of the calendar │
+│ year..."                │
+└────────────┬────────────┘
+             ↓
+┌─────────────────────────┐
+│      Embedding Model    │
+└────────────┬────────────┘
+             ↓
+┌─────────────────────────┐
+│   Cosine Similarity     │
+│      Vector Search      │
+└────────────┬────────────┘
+             ↓
+┌─────────────────────────┐
+│ Relevant Policy Chunks  │
+│        LEAVE-01         │
+└────────────┬────────────┘
+             ↓
+┌─────────────────────────┐
+│       LLM Answer        │
+└─────────────────────────┘
+
+
+
+============================================================================================
+
+
+    Full-time permanent employees are eligible for company
+    health insurance.
+
+    Health insurance includes medical and dental coverage.
+
+    Employees can add eligible dependents to their health plan.
+
+
+
+| #  | User's question                                            | What they actually mean                                                     |
+| -- | ---------------------------------------------------------- | --------------------------------------------------------------------------- |
+| 1  | **Do I get medical from the company?**                     | Is the employee eligible for company health insurance?                      |
+| 2  | **What health stuff do I get?**                            | What health benefits are provided?                                          |
+| 3  | **Does company insurance cover doctor and teeth?**         | Does health insurance include medical and dental coverage?                  |
+| 4  | **Can I put my family on company insurance?**              | Can eligible dependents be added to the health plan?                        |
+| 5  | **What about insurance for my wife/kids?**                 | Can eligible dependents be added to the health plan?                        |
+| 6  | **Is healthcare included with my job?**                    | Are full-time permanent employees eligible for health insurance?            |
+| 7  | **Do permanent people get health coverage?**               | Are full-time permanent employees eligible for health insurance?            |
+| 8  | **What insurance do I get as a full timer?**               | What health insurance benefits does a full-time permanent employee receive? |
+| 9  | **Does the company pay for my doctor visits?**             | Is medical coverage included in the company health insurance?               |
+| 10 | **Is dental included or only medical?**                    | Does the health insurance include both medical and dental coverage?         |
+| 11 | **Can my dependents use my insurance?**                    | Can eligible dependents be added to the employee's health plan?             |
+| 12 | **Can I add people to my company health plan?**            | Can eligible dependents be added?                                           |
+| 13 | **I am permanent. Do I get insurance?**                    | Are full-time permanent employees eligible for health insurance?            |
+| 14 | **What does the company cover for health?**                | What health insurance coverage is provided?                                 |
+| 15 | **Does employee insurance include dental?**                | Does health insurance include dental coverage?                              |
+| 16 | **Can family members be covered under my work insurance?** | Can eligible dependents be added to the health plan?                        |
+| 17 | **What benefits do I have for health?**                    | What health benefits are provided?                                          |
+| 18 | **Does being full time get me company medical?**           | Are full-time permanent employees eligible for company health insurance?    |
+| 19 | **Can I add my children to it?**                           | Can eligible dependents be added to the health plan?                        |
+| 20 | **Is teeth treatment covered by work insurance?**          | Does the health insurance include dental coverage?                          |
