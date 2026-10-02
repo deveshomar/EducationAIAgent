@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RAGCosineSimilarity
 {
-    public static class SampleQuestions
+    public static class SampleSentences
     {
-        public static List<string> Questions = new()
+        public static List<string> sentence = new()
     {
         // Leave
         "What is my leave balance?",
@@ -37,6 +37,7 @@ namespace RAGCosineSimilarity
 
         // Food
         "How do I bake pizza?",
+
         "Recipe for pasta.",
         "How to cook biryani?",
 

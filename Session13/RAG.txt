@@ -1,0 +1,128 @@
+=============================RAG=========================================
+Problem->
+Suppose you are facing some IT access issues on laptop
+When you raise ticket instead of solving problem they asked you to please refer this document
+you need to read and get answer, sometime you do not understand
+
+Now 
+Using RAG->  All document can be indexed or Chunked and you 
+             can get answer based on you question
+
+
+
+CHAT with documents
+
+1.  Vectors
+2.  Cosine similarity  +  BM25 Search
+3.  RAG Pipeline
+	a. Document injection pipline
+           i) Chunking techiniques
+           ii) vector DB
+              
+        b. Retrival pipeline - responsible for providing answer based on user question
+
+4. RAG Evaluaiton
+    a. RAG metrics ->  Precsion, Recall, MRR, hit rate
+    b. Answer correctness or Answer revelancy
+    c. Cross encoder for Reranking  (Docuemnt1 - .6, document 2 -.75 , document 3 - .9)
+ Cross encoder for Reranking  (document - 3)
+    
+
+d. LLM as judge   
+    I have 3 context -> doc 1, doc 2, doc3
+    and user quesiton is  .........
+     
+    can you please prvide me below things
+
+    {
+     faithfullness : true
+     confiddce score : 0-1
+    }  
+
+
+   output 
+
+    if(score <.75)
+
+      soorry we are not ale to solve your queey"   
+
+ 
+
+
+
+===============================================================
+   can you tell me my salary slip ->  [.35,4.4,5.7,889]  -> plotting over n D graph
+   
+   GPT -> genertate text / image / video 
+  can you tell me my salary slip->   Embedding models -> generate vector  
+
+
+
+using OpenAI.Embeddings;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+string model = "text-embedding-3-small";
+EmbeddingClient client = new(model, key);
+
+OpenAIEmbedding embedding = await client.GenerateEmbeddingAsync(
+    "The food was delicious and the waiter was friendly."
+);
+
+Console.WriteLine($"Dimensions: {embedding.ToFloats().Length}"); 
+
+
+
+
+Cosine similarity  -> similarity comparision 
+
+   a. today i am very happy
+   b. its very joyful day today 
+   
+score  a,b   =>  .89
+  
+  c.  i had a accident today 
+
+score  a,c   =>  .5
+
+   
+
+ 
+  
+    Cos 0   ->  1
+    Cos 90  ->  0
+
+
+   
+  =========================================================
+
+   sentence 1- > i am happy today  -> Embedding model- >  vectors [12,4,4,5,6]
+   sentence 2 -> i am joyful today -> Embedding model- >  vectors [1454,54,549504]
+
+
+    var score =  cosinesimialry(sentence1 _vector, sentece2_vector)
+
+     0 to 1
+
+=============================================Chunking Techinique=====================================
+
+    
+ 
+
+
+ 
+
+
+
+
+
+
+													[.35,4.4,5.7,889] 
+
+
+
+
+
+ 
+  
+
+ 

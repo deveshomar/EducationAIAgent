@@ -2,7 +2,7 @@
 using OpenAI.Embeddings;
 using RAGCosineSimilarity;
 
-string apikey = "rdKgA";
+string apikey = "_x5ZQ4FdHD5yB9mJbnz6o5ZoAopMlUgjCld3pX3Y5FHy5a4noBkwwOP8lMqnZrdKgA";
 
 var client = new OpenAIClient(apikey);
 
@@ -13,7 +13,7 @@ Console.WriteLine("Generating embeddings...");
 Console.WriteLine();
 
 // Generate embedding for each stored question
-foreach (var question in SampleQuestions.Questions)
+foreach (var question in SampleSentences.sentence)
 {
     var response = await client
         .GetEmbeddingClient("text-embedding-3-small")

@@ -1,0 +1,215 @@
+
+
+=====================================CHUNKING===============================================
+
+| Technique            | Main idea                              | Good use case            |
+| -------------------- | -------------------------------------- | ------------------------ |
+| Fixed-size           | Split every N characters/tokens        | Simple baseline          |
+| Fixed-size + overlap | Keep some content from previous chunk  | General RAG              |
+| Sentence-based       | Split at sentence boundaries           | FAQs, policies           |
+| Paragraph-based      | Split by paragraphs                    | Business documents       |
+| Recursive            | Try paragraph → sentence → word        | General documents        |
+| Semantic             | Split when meaning/topic changes       | Long knowledge documents |
+| Structure-aware      | Split using headings/sections          | Markdown, policies       |
+| Parent-child         | Small retrieval chunk + larger context | Enterprise RAG           |
+
+
+# Global Corporate Policies and Guidelines
+
+## Section 1: Remote & Hybrid Work Policy
+Employees in eligible engineering, product, and corporate roles are permitted to work remotely up to three (3) days per week.
+All remote employees must adhere to core working hours between 10:00 AM and 4:00 PM in their local time zone to ensure synchronous collaboration.
+The company provides a monthly internet and home office stipend of $50 USD per month for full-time remote employees.
+Remote work from international locations requires prior approval from HR and Compliance at least 30 days in advance due to tax implications.
+
+## Section 2: Annual Leave & Sick Time Policy
+Full-time permanent employees receive twenty (15) days of paid annual leave (PTO) per calendar year, accrued monthly.
+In addition, employees are entitled to ten (10) paid sick leave days per year for personal illness or family medical care.
+A maximum of five (5) unused annual leave days may be carried over into the following calendar year. Unused carry-over days expire on March 31st if not taken.
+Leave requests exceeding three (3) consecutive business days must be submitted at least two weeks in advance via the HR Portal.
+
+## Section 3: Equipment & Hardware Policy
+Every engineering employee is issued a primary workstation: either a 16-inch MacBook Pro (M-Series) or a Dell XPS 15 workstation.
+Hardware replacement and refresh occurs automatically every three (3) years or upon hardware failure verified by IT Helpdesk.
+Peripherals such as dual 27-inch 4K monitors, external keyboards, and ergonomic mice are provided upon request.
+All lost, stolen, or damaged devices must be reported to IT Security within two (2) hours of discovery to initiate remote wipe protocols.
+
+## Section 4: Travel & Expense Reimbursement Policy
+All domestic and international business travel must be booked through the corporate travel portal at least 14 days prior to departure.
+Air travel for domestic flights under 6 hours must be booked in Economy / Main Cabin class. Business class is permitted for continuous flights exceeding 8 hours.
+The maximum daily per diem meal allowance is $75 USD per day ($15 breakfast, $25 lunch, $35 dinner).
+Itemized receipts are mandatory for any individual expense item exceeding $25 USD. Expense claims must be submitted within 30 days of travel completion.
+
+
+
+1. Fixed size=  
+
+   Lenght =300  
+   Chunk 1  -
+   chunk 2
+   chunk 3
+  
+   Loose Contexual meaning (chunk may start from incomplete sentence)
+  
+2. Fixed Size and Overlap  = Retain Contexual meaning
+   
+    Lenght =200 overlap 30
+
+   
+All domestic and international business travel must be booked through the corporate travel portal at least 14 days prior to departure.
+Air travel for domestic flights under 6 hours must be booked in Economy / Main Cabin class.
+
+
+  chunk 1 ->  All domestic and international business travel must be booked through the corporate travel
+
+  chunk 2 ->  through the corporate travel portal at least 14 days prior to
+
+
+3 .Sentence-based 
+
+## Section 4: Travel & Expense Reimbursement Policy
+All domestic and international business travel must be booked through the corporate travel portal at least 14 days prior to departure.
+
+
+Chunk 1 - ## Section 4: Travel & Expense Reimbursement Policy
+Chunk 2  -All domestic and international business travel must be booked through the corporate travel portal at least 14 days prior to departure.
+
+
+4. Paragrapgh based =
+   Chunk 1 = Para1  (Section wise)
+   Chunk 2 = Para2  
+
+5. Recursive            
+  
+
+   COMPLETE RECURSIVE FLOW
+                DOCUMENT
+                    |
+                    v
+                PARAGRAPH
+                    |
+             Is it too large?
+                /       \
+              NO         YES
+              |           |
+              v           v
+            CHUNK      SENTENCES
+                          |
+                   Is sentence too large?
+                       /       \
+                     NO         YES
+                     |           |
+                     v           v
+                   CHUNK       WORDS
+                                  |
+                           Is it too large?
+                              /      \
+                            NO        YES
+                            |          |
+                            v          v
+                          CHUNK     Smaller split
+
+
+5. Semantic Chunking
+
+
+   Orgnise data as per meaning
+   
+   Split document into multiple section
+
+
+
+SMALL C# DEMO
+
+The actual embedding generation can be done using an embedding model.
+
+var sentences = new[]
+{
+    "Employees are entitled to 20 days of annual leave.",
+    "Employees should submit leave requests 3 days in advance.",
+    "Managers approve or reject leave requests.",
+    "Employees are entitled to 10 days of sick leave.",
+    "A medical certificate may be required for extended absence."
+};
+
+var embeddings = await embeddingService
+    .GenerateEmbeddingsAsync(sentences);
+
+Now compare neighboring embeddings:
+
+for (int i = 0; i < embeddings.Count - 1; i++)
+{
+    double similarity =
+        CosineSimilarity(
+            embeddings[i],
+            embeddings[i + 1]);
+
+    Console.WriteLine(
+        $"Sentence {i + 1} -> Sentence {i + 2} = {similarity:F2}");
+}
+
+Conceptually, you may get something like:
+
+S1 -> S2 = 0.89
+S2 -> S3 = 0.84
+S3 -> S4 = 0.42   <-- Topic change
+S4 -> S5 = 0.87
+
+Then:
+
+if (similarity < threshold)
+{
+    // Start a new chunk
+}
+else
+{
+    // Keep sentence in current chunk
+}
+
+For example:
+
+double threshold = 0.70;
+
+if (similarity < threshold)
+{
+    // New semantic chunk
+}   
+
+--------------------------------------------------------
+RESULT
+CHUNK 1
+-----------------------------
+Annual Leave
+
+Sentence 1
+Sentence 2
+Sentence 3
+-----------------------------
+
+              ↓
+        TOPIC CHANGE
+              ↓
+
+CHUNK 2
+-----------------------------
+Sick Leave
+
+Sentence 4
+Sentence 5
+-----------------------------
+
+So instead of saying:
+
+Every 500 tokens = new chunk
+
+we are saying:
+
+Meaning changes = possible new chunk
+ 
+   
+
+   
+
+
+
+

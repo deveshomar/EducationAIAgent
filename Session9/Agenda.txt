@@ -1,0 +1,14 @@
+  can you please share salalry slip, leave balance and my claims for apr 2026 for emp id 345
+
+Task 1  ->  salary Slip  DB Call or API (4 sec)
+Task 2  ->  Leave balance  DB ( 2 sec) 
+Task 3  ->   MyClaims  (3 sec)
+
+
+Sequnce -> Out put ->  9 sec
+
+
+Task 1 + Task 2 + Task 3 = 4.1 sec (TPL)
+
+
+

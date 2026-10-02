@@ -16,13 +16,13 @@ public class ChatController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Chat(ChatRequest request)
+    public async Task<IActionResult> Chat(string request)
     {
         var chatClient = _client.GetChatClient("gpt-5-mini");
 
         var result = await chatClient.CompleteChatAsync(
         [
-            new UserChatMessage(request.Message)
+            new UserChatMessage(request)
         ]);
 
         string json = JsonSerializer.Serialize(

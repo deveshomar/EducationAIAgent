@@ -1,5 +1,5 @@
 ﻿using OpenAI.Embeddings;
-string apikey = "A";
+string apikey = ""
 
 var client = new EmbeddingClient(
     model: "text-embedding-3-small",
@@ -7,10 +7,10 @@ var client = new EmbeddingClient(
 
 // Generate embeddings
 var emb1 = await client.GenerateEmbeddingAsync(
-    "i am feeling happy in this morning");
+    "i am happy today ");
 
 var emb2 = await client.GenerateEmbeddingAsync(
-    "can i go for shopping");
+    "i need taxi today ");
 
 // Extract vectors
 ReadOnlyMemory<float> vector1 = emb1.Value.ToFloats();
@@ -18,6 +18,8 @@ ReadOnlyMemory<float> vector2 = emb2.Value.ToFloats();
 
 // Calculate similarity
 double similarity = CosineSimilarity(vector1.Span, vector2.Span);
+
+
 
 Console.WriteLine($"Similarity = {similarity}");
 

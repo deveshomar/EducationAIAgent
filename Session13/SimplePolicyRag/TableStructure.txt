@@ -1,0 +1,120 @@
+﻿========================================================
+1. DOCUMENT TABLE  — PARENT
+========================================================
+
+DOCUMENT
+--------------------------------------------------------
+DocumentId     DocumentName              Version
+--------------------------------------------------------
+DOC-001        Employee Leave Policy     1.0
+DOC-002        Employee IT Policy        2.0
+--------------------------------------------------------
+
+
+                    DOCUMENT
+                       |
+             +---------+---------+
+             |                   |
+          DOC-001             DOC-002
+       Leave Policy          IT Policy
+
+
+ ========================================================
+2. SECTION TABLE  — CHILD OF DOCUMENT
+========================================================
+
+SECTION
+--------------------------------------------------------
+SectionId    DocumentId    SectionTitle       Order
+--------------------------------------------------------
+SEC-001      DOC-001       Annual Leave          1
+SEC-002      DOC-001       Sick Leave            2
+SEC-003      DOC-001       Carry Forward         3
+SEC-004      DOC-002       Laptop Issue          1
+--------------------------------------------------------
+
+
+DOC-001
+Employee Leave Policy
+       |
+       +--------------------+
+       |                    |
+       v                    v
+   SEC-001              SEC-002
+ Annual Leave           Sick Leave
+       |
+       v
+   SEC-003
+Carry Forward
+
+
+
+========================================================
+3. CHUNK TABLE  — CHILD OF SECTION
+========================================================
+
+CHUNK
+-----------------------------------------------------------------------
+ChunkId    DocumentId   SectionId   ChunkIndex   ChunkType    ChunkText
+-----------------------------------------------------------------------
+CHK-001    DOC-001      SEC-001        1         Semantic     Employees
+                                                               are entitled
+                                                               to 20 days...
+
+CHK-002    DOC-001      SEC-001        2         Semantic     Employees
+                                                               should submit
+                                                               leave requests...
+
+CHK-003    DOC-001      SEC-002        1         Semantic     Employees
+                                                               are entitled
+                                                               to 10 days...
+
+CHK-004    DOC-001      SEC-003        1         Semantic     Employees
+                                                               can carry
+                                                               forward 5 days...
+-----------------------------------------------------------------------
+
+
+========================================================
+5.  VECTOR STORE
+========================================================
+
+PointId    ChunkId    DocumentId    SectionId    Vector
+--------------------------------------------------------------
+P-001      CHK-101    DOC-001       SEC-001      [0.12,0.45,...]
+P-002      CHK-102    DOC-001       SEC-001      [0.23,0.67,...]
+P-003      CHK-103    DOC-001       SEC-001      [0.11,0.82,...]
+--------------------------------------------------------------
+
+
+
+                    DOCUMENT
+                       |
+                       v
+                    SECTION
+                       |
+                       v
+                     CHUNK
+                       |
+              +--------+--------+
+              |                 |
+              v                 v
+         PARENT CHUNK       CHILD CHUNK
+                                |
+                                v
+                           EMBEDDING
+                                |
+                                v
+                             QDRANT
+                                |
+                                v
+                         VECTOR SEARCH
+                                |
+                                v
+                           CHUNK ID
+                                |
+                                v
+                         ORIGINAL TEXT
+                                |
+                                v
+                              LLM

@@ -1,0 +1,95 @@
+==================Chuking Details=======================================
+
+**Leave Policy**
+
+The company is committed to providing employees with appropriate 
+leave benefits to support their health, well-being, and work-life balance.
+Employees are eligible to apply for various types of leave in accordance with 
+company guidelines. Planned leave should be requested in advance through
+the approved leave management system and is subject to manager 
+approval based on business requirements. Sick leave may require supporting medical 
+documentation when applicable. Employees are expected to notify their manager promptly in case of emergency or unplanned leave. 
+Unauthorized absences may result in disciplinary action. Leave balances should be monitored regularly, 
+and any carry-forward or leave encashment will be governed by the company's leave policy.
+ The organization encourages employees to use their leave responsibly while ensuring business continuity.
+
+
+
+1. Fixed Text splitter based chunking lets 100 Char
+
+Chunk 1   The company is committed to providing employees         [43,454.298.09854.95860.939]
+chunk 2   leave benefits to support their health                  [43,454.298.09854.95860.939]
+chunk 3   well-being, and work-life balance.                      [43,454.298.09854.95860.939]
+Chunk 4
+===================================================================================================================
+
+Leave Policy
+
+Employees are entitled to 20 days of annual leave.
+
+Payroll Policy
+
+Salaries are processed on the last working day of each month.
+
+
+
+2. Section-based chunking:
+
+Chunk 1: Leave Policy + its content      [embeddings only have related to payroll]
+Chunk 2: Payroll Policy + its content
+
+
+3. Overlapping Chuncking
+
+Sliding window chunking (with overlap):
+
+Chunk 1: Leave Policy + first part of Payroll Policy
+Chunk 2: Last part of Leave Policy + Payroll Policy
+
+
+The company is committed to providing employees with appropriate 
+leave benefits to support their health, well-being, and work-life balance.
+Employees are eligible to apply for various types of leave in accordance with 
+company guidelines. Planned leave should be requested in advance through
+the approved leave management system and is subject to manager 
+
+chunk 1
+The company is committed to providing employees with appropriate 
+
+chunk 2
+employees with appropriate leave benefits to support
+
+Chunk 3
+support their health, well-being, and work-life balance.
+
+
+4. Paragrapgh based
+suppose some imporant article is there and that is dived into multiple paragrapgh
+
+
+5. line based chunking
+
+
+
+
+===============================================================================================
+
+1. Employees are entitled to 24 paid leave days per calendar year.
+2. Casual leave can be taken for urgent personal work and must be approved by the reporting manager.
+3. Sick leave requires medical documentation if the leave exceeds two consecutive working days.
+4  Employees should apply for planned leave at least five working days in advance.
+5. Unused paid leave can be carried forward up to 10 days into the next calendar year.
+6. Leave requests are subject to business requirements and manager approval.
+7. Employees on probation are eligible only for sick leave and unpaid leave unless otherwise approved by HR.
+8 .Maternity leave and paternity leave are provided according to the company's HR guidelines and
+
+
+
+chunk 1   Employees are entitled to 24 paid leave days per calendar year.
+chunk 2   Casual leave can be taken for urgent personal work and must be approved by the reporting manager.
+Chunk 3   Sick leave requires medical documentation if the leave exceeds two consecutive working days.
+Chunk 4   Employees should apply for planned leave at least five working days in advance.
+
+
+
+
