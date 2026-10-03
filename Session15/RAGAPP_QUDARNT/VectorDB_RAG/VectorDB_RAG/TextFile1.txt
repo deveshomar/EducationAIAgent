@@ -1,0 +1,129 @@
+﻿=================Qudarnt DB===============
+Dedicated Vector DB
+│
+├── Qdrant
+├── Pinecone
+├── Milvus
+├── Weaviate
+├── Chroma
+└── LanceDB
+
+Existing DB + Vector capability
+│
+├── PostgreSQL + pgvector
+├── Redis
+├── MongoDB
+├── Elasticsearch
+└── OpenSearch
+
+
+
+
+1. Setup Qdrant DB
+  1. Install Docker
+  2. Run Qdrant container
+
+docker run -d \
+  --name qdrant \
+  -p 6333:6333 \
+  -p 6334:6334 \
+  -v "$(pwd)/qdrant_storage:/qdrant/storage" \
+  qdrant/qdrant
+
+
+  http://localhost:6333/dashboard#/collections/
+  curl http://localhost:6333
+
+  2.  
+  Qdrant
+  └── Collection
+       ├── Point
+       │    ├── ID
+       │    ├── Vector
+       │    └── Payload
+       ├── Point
+       └── Point
+
+
+
+3. create collection
+
+curl -X PUT "http://localhost:6333/collections/products" -H "Content-Type: application/json" -d "{\"vectors\":{\"size\":4,\"distance\":\"Cosine\"}}"
+
+Read collection
+curl http://localhost:6333/collections/products
+
+
+curl -X POST "http://localhost:6333/collections/Policydocument/points/scroll" -H "Content-Type: application/json" -d "{\"limit\":10,\"with_payload\":true,\"with_vector\":false}"
+
+
+4. http://localhost:6333/collections/Policydocument
+
+
+
+5. NNS 
+
+Vector
+   ↓
+Index
+   ↓
+Nearest-neighbor search
+   ↓
+Top K results
+
+
+A = [1, 2]
+B = [2, 3]
+C = [8, 9]
+D = [10, 10]
+E = [2, 2]
+
+
+Y
+10 |                         D
+ 9 |                       C
+ 8 |
+ 7 |
+ 6 |
+ 5 |
+ 4 |
+ 3 |     B
+ 2 |  A  E
+ 1 |
+   +---------------------------- X
+      1  2  3  4  5 ... 10
+
+
+      user query = X = [2, 2.5]
+
+B = [2,3]
+E = [2,2]
+
+
+6. HNSW — Hierarchical Navigable Small World
+                 Vector A
+                /        \
+          Vector B       Vector C
+          /     \          \
+     Vector D   Vector E    Vector F
+
+
+ 7. Saving  
+     "When a vector is inserted, Qdrant adds it to the vector index and creates connections to relevant neighboring vectors. When another vector arrives, it does the same. Over time, the index 
+     forms a searchable graph of the vector space.
+
+8. Existing vectors:
+
+A = [0.1, 0.2]
+B = [0.2, 0.3]
+C = [0.8, 0.9]
+
+D = [0.15, 0.25]
+
+       A
+      / \
+     D---B     C
+
+
+                 
+

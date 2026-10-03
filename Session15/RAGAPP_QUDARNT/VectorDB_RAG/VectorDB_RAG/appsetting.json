@@ -1,0 +1,5 @@
+{
+  "OpenAIKey": "YOUR_OPENAI_KEY",
+  "QdrantUrl": "http://localhost:6333",
+  "CollectionName": "company-policy"
+}
