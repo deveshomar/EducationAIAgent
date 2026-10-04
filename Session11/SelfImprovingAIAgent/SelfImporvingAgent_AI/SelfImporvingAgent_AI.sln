@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfImporvingAgent_AI", "SelfImporvingAgent_AI\SelfImporvingAgent_AI.csproj", "{6473AE37-7ADB-49A6-A049-D828705FA43C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6473AE37-7ADB-49A6-A049-D828705FA43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6473AE37-7ADB-49A6-A049-D828705FA43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6473AE37-7ADB-49A6-A049-D828705FA43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6473AE37-7ADB-49A6-A049-D828705FA43C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE03CF55-8C41-41E1-A439-C19568323AA2}
+	EndGlobalSection
+EndGlobal

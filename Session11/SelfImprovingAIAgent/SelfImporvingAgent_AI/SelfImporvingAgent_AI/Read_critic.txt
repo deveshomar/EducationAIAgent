@@ -1,0 +1,36 @@
+﻿One LLM creates something, and another LLM 
+(or another call with a critic role) reviews
+it and identifies weaknesses.
+
+User Query ->   LLM -> ResultX ->   Go to Another LLM Ask can you verify this ResultX-> ResultY -> Get Some Score
+
+
+
+              USER GOAL
+                  │
+                  ▼
+          ┌───────────────┐
+          │    CREATOR    │
+          │ Generate plan │
+          └───────┬───────┘
+                  │
+                  ▼
+          ┌───────────────┐
+          │    CRITIC     │
+          │ Review output │
+          └───────┬───────┘
+                  │
+                  ▼
+          ┌───────────────┐
+          │   FEEDBACK    │
+          │ Score + issues│
+          └───────┬───────┘
+                  │
+                  ▼
+          ┌───────────────┐
+          │    CREATOR    │
+          │ Improve plan  │
+          └───────┬───────┘
+                  │
+                  ▼
+             FINAL RESULT
