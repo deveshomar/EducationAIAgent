@@ -78,6 +78,35 @@ LLM
    ↓
 Answer
 
+========================================================================================
+
+
+Policy 
+==================================================
+SECTION LEAVE-02: SICK LEAVE POLICY
+==================================================
+
+Employees receive ten paid sick leave days per calendar year.
+
+Sick leave may be used for the employee's personal illness or
+family medical care.
+
+
+
+==================================================
+SECTION LEAVE-03: SPECIAL LEAVE
+==================================================
+
+Employees may request special leave for approved personal or
+family circumstances.
+
+Special leave requires manager approval and may require HR approval
+depending on the type and duration of leave.
+
+
+
+
+
     "question": "Where should employees 
                  submit leave requests?",
 
@@ -87,10 +116,10 @@ Answer
 
 Suppose we get after cosine similartiy  and Document 247
 Chunk 1 →  LEAVE-03  ← relevant
-Chunk 2 →  LEAVE-01   247    
-Chunk 3 →  LEAVE-09     532  
-Chunk 4 → SEPARATION-01  812  
-Chunk 5 → test 01     301  
+Chunk 2 →  LEAVE-01   relevant    
+Chunk 3 →  LEAVE-05     
+Chunk 4 →   SEPARATION-01  812  
+Chunk 5 →  test 01     301  
 
 ==========================================================================
 
@@ -103,7 +132,7 @@ Chunk 5 → test 01     301
 
 
        Retrieved = 5
-       Relevant = 2
+       Relevant = 3
 
 Precision = 2 / 5
           = 0.40

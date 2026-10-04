@@ -185,22 +185,39 @@ MRR
 "How high did I rank the useful information?"
 
 
-===============================================================	
+=============================== ===TEST Analysis =======================	
 
 We can test with Top 3, 5, 10 etc
 
-             Top-1    Top-3    Top-5    Top-10
+Retrieval Evaluation Report
+===========================
+
+Metric       Top-1    Top-3    Top-5    Top-10
 ------------------------------------------------
-Hit Rate
-Precision
-Recall
-MRR
+Hit Rate      62%      86%      91%      96%
+Precision     62%      58%      52%      45%
+Recall        62%      86%      91%      96%
+MRR           62%      78%      82%      85%
+------------------------------------------------
 
+Recall Analysis
+---------------
+Top-1  → 62%
+Top-3  → 86%
+Top-5  → 91%
+Top-10 → 96%
 
-Top-1 → Recall 62%
-Top-3 → Recall 86%
-Top-5 → Recall 91%
-Top-10 → Recall 96%
+Observation:
+As Top-K increases, Recall improves because 
+more relevant documents
+are retrieved. However, Precision may decrease 
+as more documents
+are included.
+
+Conclusion:
+Top-5 provides a good balance between Recall and the number of
+documents passed to the LLM.
+
 
 
 ========================================================================================
