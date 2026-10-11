@@ -1,0 +1,165 @@
+﻿
+
+
+========================MCP========================================
+
+Can we get emp data from Chat GPT
+can we get emp data from Claude Desktop,
+using MCP we can connect with External DB.
+
+Example
+Find flights from Delhi to Mumbai tomorrow, under ₹7,000.
+Can you please create 2 days plan for my trip to Delhi, including 
+sightseeing and food recommendations? 
+
+
+
+PROBLEM-
+
+We have 1000 Type of APIS like Ticket booling api, flipkart api, 
+Stock API - 
+https://indianapi.in/indian-stock-market
+https://rapidapi.com/linuz/api/indian-stock-exchange-api2
+
+https://publicapis.dev/category/shopping
+https://publicapis.dev/resource/flipkart-marketplace/xcc2qccn
+
+- URL and request format.
+- Authentication mechanism, such as an API key or OAuth.
+- Parameter names and response format.
+- Business rules and booking process.
+- Access permissions and restrictions.
+For example, a flight API might expect origin and destination, while another API uses different parameter names.
+We need a standard way for AI applications to discover and use external tools.
+
+==================================================================================
+
+MCP Official Site-
+https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server
+
+MCP (Model Context Protocol) is an open-source standard for connecting AI 
+applications to external systems.
+Using MCP, AI applications like Claude or ChatGPT can connect to data sources (e.g. local files, databases), tools (e.g. search engines, calculators) and workflows (e.g. specialized prompts)—enabling 
+them to access key information and perform tasks.
+
+Architecture-   
+
+MCP follows a client-server architecture where an MCP host — 
+an AI application like Claude Code or Claude Desktop — 
+establishes connections to one or more MCP servers
+
+
+The key participants in the MCP architecture are:
+MCP Host: The AI application that coordinates and manages one or multiple MCP clients
+MCP Client: A component that maintains a connection to an MCP server and
+obtains context from an MCP server for the MCP host to use
+MCP Server: A program that provides context to MCP clients
+
+
+Steps-
+
+1. Install MCP Server: Follow the instructions on the official MCP site
+to set up the MCP server on your local machine or cloud environment.
+
+==============================================================================
+
+MCP Transport in C# — STDIO vs HTTP
+
+STDIO
+Messages travel through standard input and output.
+Message exachange via JSON -RPC (Remote Procedure Call) protocol.   
+
+Two EXE files communicating with each other
+Imagine you have two programs:
+- Claude.exe — the AI application.
+- EmployeeMcpServer.exe — your C# MCP server.
+
+
+InPUT-
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "get_weather",
+    "arguments": { "location": "San Francisco, CA" }
+  },
+  "id": 1
+}
+
+
+
+Oupput-
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "The weather in San Francisco, CA is currently Sunny and 72°F."
+      }
+    ]
+  },
+  "id": 1
+}
+
+===============================================================================
+Code Development
+Code has been added
+===============================================================================
+
+
+MCP Inspector
+https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector#remote-http-server
+
+a. Node must be installed on your machine to run the MCP Inspector. You can download Node from https://nodejs.org/en/download/ and follow the installation instructions for your operating system.
+
+
+Interactive developer tooling for testing and debugging MCP 
+servers, in the browser, on the command line, and in the terminal
+npx @modelcontextprotocol/inspector
+
+
+
+Testing 
+https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector
+
+
+Claude config
+
+ "mcpServers": {
+    "employee-assistant": {
+      "command": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "args": [
+        "run",
+        "--project",
+        "D:\\Sessions\\Education\\Session17\\MCP\\EmployeeMcpServer\\EmployeeMcpServer\\EmployeeMcpServer.csproj"
+      ]
+    }
+  },
+
+
+  Vs code config
+
+  Add .vscode folder
+  insider .vscode folder  create mcp.json file and add below code
+
+  
+{
+  "servers": {
+    "EmployeeMcpServer": {
+      "type": "stdio",
+      "command": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "args": [
+        "run",
+        "--project",
+        "D:\\Sessions\\Education\\Session17\\MCP\\EmployeeMcpServer\\EmployeeMcpServer\\EmployeeMcpServer.csproj"
+      ]
+    }
+  }
+}
+
+
+To know exact exe locatation
+Type below in CMD
+where .exe   dotnet.exe
+

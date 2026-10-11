@@ -1,0 +1,250 @@
+﻿# NSE MCP + Semantic Kernel AI Agent — Code Explanation
+
+## 1. What does this application do?
+
+Your C# console application connects to the public NSE MCP server, discovers its available tools, registers them with Semantic Kernel, and uses an OpenAI model to answer stock-market questions.
+
+For example, you can ask:
+
+- Show me the top gainers.
+- What is the latest available NIFTY data?
+- Get the quote for a particular stock.
+- How fresh is the market data?
+
+The LLM decides which available tool to call based on the user's question.
+
+## 2. Application flow
+
+1\. User
+
+"Show me the top gainers"
+
+2\. ChatHistory + OpenAI LLM
+
+Understands the question and selects a tool
+
+3\. Semantic Kernel
+
+Manages automatic function calling
+
+4\. MCP Client → NSE MCP Server
+
+Invokes the selected NSE tool
+
+5\. NSE tool result → LLM
+
+LLM formats the result into a user-friendly answer
+
+## 3. Explanation of each code section
+
+### Step 1 — Read the OpenAI API key
+
+```
+var apiKey = "...";
+```
+
+This key authenticates your application with OpenAI. In a real application, load it from an environment variable or .NET User Secrets instead of hard-coding it.
+
+### Step 2 — Connect to the NSE MCP server
+
+```
+var transport = new HttpClientTransport(
+    new HttpClientTransportOptions
+    {
+        Endpoint = new Uri(
+            "https://mcp.nseindia.in/bhavcopy/cm/mcp")
+    });
+
+await using var mcpClient =
+    await McpClient.CreateAsync(transport);
+```
+
+- `HttpClientTransport` configures communication over HTTP.
+- `Endpoint` specifies the NSE MCP server address.
+- `McpClient.CreateAsync()` creates the client connection.
+
+Purpose: Your application can now communicate with the remote MCP server, assuming the endpoint and transport configuration are supported by that server.
+
+### Step 3 — Discover available MCP tools
+
+```
+var mcpTools = await mcpClient.ListToolsAsync();
+
+foreach (var tool in mcpTools)
+{
+    Console.WriteLine(
+        $"- {tool.Name}: {tool.Description}");
+}
+```
+
+The client asks the MCP server which tools it exposes.
+
+For example, the server might advertise tools for stock quotes, gainers, losers, or index data. The exact names depend on the server's actual response.
+
+This is called tool discovery. You don't need to manually hard-code every tool name.
+
+### Step 4 — Create Semantic Kernel
+
+```
+var builder = Kernel.CreateBuilder();
+
+builder.AddOpenAIChatCompletion(
+    modelId: "gpt-4.1-mini",
+    apiKey: apiKey);
+
+var kernel = builder.Build();
+```
+
+This configures Semantic Kernel with an OpenAI chat model.
+
+- `Kernel.CreateBuilder()` prepares the kernel.
+- `AddOpenAIChatCompletion()` configures the LLM service.
+- `Build()` creates the kernel instance.
+
+The LLM understands questions and determines when a registered function could help answer them. It does not inherently know the current NSE market data.
+
+### Step 5 — Register MCP tools with Semantic Kernel
+
+```
+kernel.Plugins.AddFromFunctions(
+    "NSE",
+    mcpTools.Select(tool => tool.AsKernelFunction()));
+```
+
+This is the bridge between MCP tools and Semantic Kernel functions.
+
+The code registers the discovered tools under the `NSE` plugin, making them available to Semantic Kernel's function-calling mechanism.
+
+Conceptually:
+
+```
+NSE MCP tools
+     ↓
+Semantic Kernel functions
+     ↓
+Available to the LLM for tool selection
+```
+
+The `AsKernelFunction()` extension must be supported by your installed SDK or a compatible adapter.
+
+### Step 6 — Enable automatic function calling
+
+```
+var settings = new OpenAIPromptExecutionSettings
+{
+    FunctionChoiceBehavior =
+        FunctionChoiceBehavior.Auto(
+            options: new()
+            {
+                RetainArgumentTypes = true
+            })
+};
+```
+
+This tells Semantic Kernel to allow the model to choose a suitable registered function automatically.
+
+For example:
+
+| User question      | Possible tool selection     |
+| ------------------ | --------------------------- |
+| Show top gainers   | Top gainers tool            |
+| Get a stock quote  | Individual stock quote tool |
+| Show NIFTY data    | Index data tool             |
+| Is the data fresh? | Data freshness tool         |
+
+The model chooses from the functions actually registered with the kernel. It cannot call an unavailable tool simply because your system prompt describes it.
+
+### Step 7 — Create the chat service and history
+
+```
+var chatService =
+    kernel.GetRequiredService<IChatCompletionService>();
+
+var history = new ChatHistory();
+```
+
+- `IChatCompletionService` provides access to the configured chat model.
+- `ChatHistory` stores conversation messages in memory during this program's execution.
+
+You then add system instructions describing the assistant's responsibilities:
+
+```
+history.AddSystemMessage("""
+    You are an NSE market-data AI assistant.
+    Use available tools for current market information.
+    Never invent stock prices or market data.
+    """);
+```
+
+Your full system message explains when to use the various NSE capabilities and instructs the model to report only facts supported by tool results.
+
+Note: The code you pasted has duplicated `AddSystemMessage` calls and malformed raw-string delimiters. Keep a single correctly formatted system-message call.
+
+### Step 8 — Run the conversation loop
+
+```
+while (true)
+{
+    Console.Write("\nYou: ");
+    string? input = Console.ReadLine();
+
+    if (string.IsNullOrWhiteSpace(input))
+        continue;
+
+    if (input.Equals(
+        "exit",
+        StringComparison.OrdinalIgnoreCase))
+        break;
+
+    history.AddUserMessage(input);
+
+    var response =
+        await chatService.GetChatMessageContentAsync(
+            history,
+            executionSettings: settings,
+            kernel: kernel);
+
+    string answer = response.Content ?? "";
+
+    history.AddAssistantMessage(answer);
+
+    Console.WriteLine($"\nAgent: {answer}");
+}
+```
+
+This is the main execution loop:
+
+1. Read the user's question.
+2. Add the question to chat history.
+3. Send the conversation to the LLM through Semantic Kernel.
+4. Let automatic function calling invoke a suitable registered tool when needed.
+5. Receive the final model response.
+6. Save the answer in history.
+7. Display it in the console.
+
+Typing `exit` stops the loop.
+
+## 4. What happens internally when a user asks for top gainers?
+
+1. User: "Show me the top gainers."
+2. LLM: Interprets the request and selects the registered top-gainers function.
+3. Semantic Kernel: Handles the function-calling workflow.
+4. MCP client: Sends a tool invocation to the NSE MCP server.
+5. NSE MCP server: Executes the requested tool and returns its result.
+6. LLM: Uses the returned data to prepare a readable answer.
+7. Console: Prints the answer for the user.
+
+The key distinction is that Semantic Kernel orchestrates the LLM and registered functions, while the MCP client communicates with the NSE MCP server.
+
+## 5. Important concepts to remember
+
+| Component       | Responsibility                                   |
+| --------------- | ------------------------------------------------ |
+| OpenAI LLM      | Understands the request and selects functions    |
+| Semantic Kernel | Registers functions and orchestrates calling     |
+| MCP client      | Communicates with the remote MCP server          |
+| NSE MCP server  | Exposes tools and returns market data            |
+| `ChatHistory`   | Keeps messages in memory for the current session |
+| System message  | Guides tool selection and response behavior      |
+
+One final point: your application does not automatically save chat history permanently. Also, the system prompt's claim that data is live does not make it live—the actual tool response and its timestamps determine what you can accurately report.

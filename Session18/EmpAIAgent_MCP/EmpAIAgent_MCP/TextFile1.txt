@@ -1,0 +1,35 @@
+﻿
+USER
+  |
+  | 1. Asks: "What is EMP101's leave balance?"
+  v
+SEMANTIC KERNEL + OPENAI LLM
+  |
+  | 2. LLM understands the question and selects a tool
+  v
+SEMANTIC KERNEL PLUGIN
+  |
+  | 3. Calls GetLeaveBalance("EMP101")
+  v
+MCP CLIENT
+  |
+  | 4. Sends tool request through STDIO
+  v
+MCP SERVER (C#)
+  |
+  | 5. Executes GetLeaveBalance()
+  v
+EMPLOYEE DATA
+  |
+  | 6. Returns leave balance: 12 days
+  v
+MCP CLIENT → PLUGIN → SEMANTIC KERNEL
+  |
+  | 7. Sends tool result back to the LLM
+  v
+OPENAI LLM
+  |
+  | 8. Generates the final response
+  v
+USER
+  "EMP101 has 12 days of annual leave remaining."
