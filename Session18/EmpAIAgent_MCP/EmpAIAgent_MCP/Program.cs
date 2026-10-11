@@ -5,7 +5,7 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using ModelContextProtocol.Client;
 
-var apiKey = "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";
+var apiKey = "sk-proj-nkw5k6E-nkA";
 
 if (string.IsNullOrWhiteSpace(apiKey))
 {
