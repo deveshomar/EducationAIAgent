@@ -1,0 +1,6 @@
+@EmployeeAssistant.ItApi_HostAddress = http://localhost:5036
+
+GET {{EmployeeAssistant.ItApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

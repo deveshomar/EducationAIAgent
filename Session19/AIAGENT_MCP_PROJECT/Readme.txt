@@ -1,0 +1,160 @@
+Project Folder details
+
+
+1.UI Agent ->   AI Agent Applicaition  First Layer where user will ask quesiton  
+              Developed in Sementic kernal
+              It used MCP gateway for furter processing
+
+2. GateWay  -> this folder contains MCP gateway where we defined all MCP servers
+               AI Agent make call to MCP gateway here
+
+3.tool Discovery-> This folder contains Testing tool for mcp servers. this is tool discovery
+
+4. EmployeeAssistantEnterprise   
+                                This folder contains  
+                                  HR MCP-> HR API
+                                  IT MCP -> It API
+                                 
+                        MCP Gateway calls MCP HR or MCP IT 
+
+
+
+HR API  ──> HR MCP Server ──┐
+                            ├──> MCP Gateway
+IT API  ──> IT MCP Server ──┘       │
+                                    ├── list_backend_tools
+                                    └── call_backend_tool
+==============================================================================================================================
+
+
+
+====================================MCP and API integration with AI AGENT==============================
+
+# MCP and API Integration with an AI Agent
+
+## 1. Integration with Existing APIs
+**Objective:** Reuse existing business APIs and databases without duplicating business logic.
+
+Deploy the existing APIs to Azure App Service or another suitable Azure hosting service.
+
+- **Payroll API** → Payroll Database
+- **ITHelp API** → IT Helpdesk Database
+- **HRService API** → HR Database
+- **TaxService API** → Tax Database
+- **Leave API** → Leave Management Database
+
+## 2. Develop MCP Servers
+**Objective:** Expose existing API capabilities as MCP tools that an AI agent can discover and invoke.
+
+Deploy the MCP servers to Azure App Service or another suitable Azure hosting service.
+
+- **Payroll.MCP** → Payroll API
+- **ITHelp.MCP** → ITHelp API
+- **HRService.MCP** → HRService API
+- **TaxService.MCP** → TaxService API
+- **Leave.MCP** → Leave API
+
+Each MCP server exposes relevant business operations as tools, such as retrieving salary slips, checking leave balances, and searching IT troubleshooting guidance.
+
+## 3. Implement an MCP Gateway
+**Objective:** Provide a centralized, secure access point for MCP servers.
+
+The MCP gateway maintains the registered MCP server endpoints and routes client requests to the appropriate server.
+
+Example endpoints:
+
+- `https://hrmcp.example.com/mcp`
+- `https://itmcp.example.com/mcp`
+- `https://payrollmcp.example.com/mcp`
+- `https://taxmcp.example.com/mcp`
+- `https://leavemcp.example.com/mcp`
+
+The gateway should support authentication, authorization, routing, monitoring, and secure communication. The example URLs are placeholders and must be replaced with actual deployed endpoints.
+
+## 4. Develop the AI Agent Using Semantic Kernel
+**Objective:** Enable users to interact with multiple enterprise systems through natural language.
+
+The AI agent is developed using C#/.NET and Semantic Kernel.
+
+### Agent execution workflow
+
+1. **Initialize the agent:** Configure Semantic Kernel and the selected LLM.
+2. **Connect to the MCP gateway:** Establish MCP client connections to the registered MCP servers.
+3. **Discover tools dynamically:** Retrieve the available tools and their descriptions from the MCP servers.
+4. **Register tools with the LLM:** Make the relevant tool definitions available to the model for tool selection.
+5. **Receive the user query:** Accept a natural-language request, such as "Show my September salary slip."
+6. **Select the appropriate tool:** The LLM determines which tool best matches the user's request.
+7. **Invoke the tool:** The agent calls the selected MCP tool through the appropriate client connection.
+8. **Execute the business operation:** The MCP server calls the corresponding existing API, which accesses the required database.
+9. **Return the result:** The tool response is passed back to the LLM, which generates a user-friendly answer.
+
+### Example
+
+**User:** "Show my leave balance."
+
+- AI agent discovers `get_my_leave_balance`.
+- The LLM selects the HR or Leave MCP tool based on the registered tool definitions.
+- The MCP client invokes the selected tool with the employee ID.
+- The MCP server calls the existing business API.
+- The API retrieves the leave balance from the database.
+- The agent returns the result to the user.
+
+## 5. High-Level Architecture
+
+User → AI Agent (Semantic Kernel) → LLM Tool Selection → MCP Client → MCP Gateway → Relevant MCP Server → Existing Business API → Database
+
+The response follows the reverse path back to the user.
+
+## 6. Key Benefits
+
+- Reuse existing APIs and business logic.
+- Integrate HR, Payroll, IT Helpdesk, Tax, and Leave systems through a common agent experience.
+- Discover and invoke tools dynamically instead of hardcoding every operation into the agent.
+- Centralize MCP endpoint management and security.
+- Add new enterprise capabilities by registering additional MCP servers and tools.
+- Apply authentication, role-based access control, audit logging, and human approval for sensitive operations.
+
+**Important design consideration:** An MCP gateway is an architectural component, not necessarily a built-in MCP feature. Depending on the implementation, the gateway may aggregate tools or route requests to individual MCP servers. Authentication and authorization must be enforced at the gateway and the underlying APIs.
+
+
+=================================================================================
+FLOW
+a. utlization of existing APIs   (Azure or Azure Appservice)
+    Paryoll.api   -> DB
+    IThelp.api    -> DB
+    HRService.api   -> DB
+    TaxService.api  -> DB
+    LEave.api      -> DB
+
+b. Creating MCP servers      (Azure or Azure Appservice)
+
+    Paryoll.MCP ->Paryoll.api 
+    ItHelp.MCP  ->IThelp.api   
+    HRServiceMCP->  HRService.api .api 
+   
+c. Creating MCP gateways      (Azure or Azure Appservice)
+   Contains all MCP address
+   https// hrmcp.com 
+   https// ITmcp.com
+   https// Payrollmcp.com
+
+d. Creating AI Agent 
+   AiAgent will connect to MCP Gateway
+
+   AI agent -> sementic kernal
+   AI Agent -> connet to MCP gateway and discover tools-> All Tools send to LLM
+   AI agent -> User will ask 
+   Based on question will get which tool to invoke
+   
+   Will create Client connection and make required method call  
+
+
+===================================================================================
+
+
+
+   
+   
+       
+
+                          

@@ -1,0 +1,242 @@
+HR API — port 5101
+Leave balance
+GET /api/hr/employees/EMP101/leave-balance
+
+Employee profile
+GET /api/hr/employees/EMP101/profile
+
+ Copy URL
+
+September salary slip
+GET /api/hr/employees/EMP101/salary-slips/2026-09
+
+ Copy URL
+
+IT API — port 5102
+Network diagnostics
+GET /api/it/employees/EMP101/network-diagnostics
+
+ Copy URL
+
+IT knowledge search
+GET /api/it/knowledge?query=VPN
+
+
+
+http://localhost:5192/api/hr/employees/EMP101/leave-balance
+http://localhost:5036/api/it/knowledge?query=VPN
+
+
+
+Show me the available HR and IT tools.
+
+What is the leave balance for employee EMP101?
+
+Find the IT tools available for employee support.
+
+
+mcp gateway
+
+Invoke-RestMethod http://localhost:5170/health
+Invoke-RestMethod http://localhost:5226/health
+
+
+curl.exe -i http://localhost:5170/health
+curl.exe -i http://localhost:5226/health
+
+
+
+curl.exe  http://localhost:5192/api/hr/employees/EMP101/leave-balance
+
+
+curl.exe  http://localhost:5036/api/it/knowledge?query=VPN
+curl.exe  http://localhost:5036/api/hr/employees/EMP101/salary-slips/2026-09
+
+http://localhost:5192/api/hr/employees/EMP101/leave-balance
+http://localhost:5036/api/it/knowledge?query=VPN
+
+from mcp gateway  this will be payload  post from one line
+test from discovery tool
+{
+  "server": "hr",
+  "toolName": "get_my_leave_balance",
+  "arguments": {
+    "employeeId": "EMP101"
+  }
+}
+
+
+{
+  "server": "hr",
+  "toolName": "get_my_employee_profile",
+  "arguments": {
+    "employeeId": "EMP101"
+  }
+}
+
+
+{
+  "server": "hr",
+  "toolName": "get_my_salary_slip",
+  "arguments": {
+    "employeeId": "EMP101",
+    "month": "2026-09"
+  }
+}
+
+
+{
+  "server": "it",
+  "toolName": "get_network_diagnostics",
+  "arguments": {
+    "employeeId": "EMP101"
+  }
+}
+
+{
+  "server": "it",
+  "toolName": "search_it_knowledge",
+  "arguments": {
+    "query": "VPN connection issue"
+  }
+}
+
+
+nned to pass this for getting list of tools from mcp servers to call.
+{}
+
+
+
+HR API  ──> HR MCP Server ──┐
+                            ├──> MCP Gateway
+IT API  ──> IT MCP Server ──┘       │
+                                    ├── list_backend_tools
+                                    └── call_backend_tool
+
+
+
+
+AI Agent -> MCP Gateway- GET TOOLS -> SEND TO LLM
+Below are tools 
+
+[
+  {
+    "server": "hr",
+    "Name": "get_my_salary_slip",
+    "Description": "Retrieve salary slip metadata for an employee and month in YYYY-MM format. Read-only operation.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by the trusted application",
+          "type": "string"
+        },
+        "month": {
+          "description": "Salary month in YYYY-MM format",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId",
+        "month"
+      ]
+    }
+  },
+  {
+    "server": "hr",
+    "Name": "get_my_employee_profile",
+    "Description": "Retrieve an employee profile from the HR API.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by the trusted application",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  },
+  {
+    "server": "hr",
+    "Name": "get_my_leave_balance",
+    "Description": "Read an employee\u0027s leave balance from the HR API. The employee ID must come from trusted authenticated identity context, not from an untrusted chat message.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by the trusted application",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  },
+  {
+    "server": "it",
+    "Name": "search_it_knowledge",
+    "Description": "Search the IT knowledge base for read-only troubleshooting guidance.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "description": "Search query, such as VPN, DNS or Wi-Fi",
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  {
+    "server": "it",
+    "Name": "get_network_diagnostics",
+    "Description": "Read network diagnostic information for an authorized employee.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by trusted identity context",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  },
+  {
+    "server": "it",
+    "Name": "get_device_details",
+    "Description": "Retrieve device details for an authorized employee.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by trusted identity context",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  }
+]
+
+
+mpre quetions
+Retrieve the salary slip details for EMP101 for September 2026.Query	Expected tool
+Find VPN troubleshooting instructions	search_it_knowledge
+Check network connectivity for EMP101	get_network_diagnostics
+What device is assigned to EMP101?	get_device_details
+Check remaining leave for EMP101	get_my_leave_balance
+Show EMP101's employee details	get_my_employee_profile
+Get EMP101's September 2026 salary slip	get_my_salary_slip
+
+

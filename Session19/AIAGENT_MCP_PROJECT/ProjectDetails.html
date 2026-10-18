@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Employee Assistant Architecture</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        h1, h2, h3 {
+            color: #174a7e;
+        }
+
+        h1 {
+            border-bottom: 3px solid #174a7e;
+            padding-bottom: 12px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 6px;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 18px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #e8f0f8;
+        }
+
+        code {
+            background: #eee;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .note {
+            background: #fff8e5;
+            border-left: 4px solid #e5a000;
+            padding: 12px;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Enterprise Employee Assistant</h1>
+
+    <p>
+        <strong>Technology:</strong>
+        C#/.NET, Semantic Kernel, Model Context Protocol (MCP),
+        Large Language Models (LLMs), and existing enterprise APIs.
+    </p>
+
+    <p>
+        <strong>Objective:</strong>
+        Build an AI-powered employee assistant that allows employees
+        to access HR, leave, payroll, IT support, tax, and expense
+        information through natural-language conversations.
+    </p>
+
+    <div class="section">
+        <h2>1. Architecture Overview</h2>
+
+        <ol>
+            <li>
+                <strong>Employee Chat Interface:</strong>
+                Employees ask questions in natural language.
+            </li>
+            <li>
+                <strong>AI Agent:</strong>
+                A C# application using Semantic Kernel interprets
+                the request and selects the appropriate tool.
+            </li>
+            <li>
+                <strong>MCP Gateway (Optional):</strong>
+                Provides centralized routing, access controls,
+                and monitoring when required.
+            </li>
+            <li>
+                <strong>MCP Servers:</strong>
+                Expose business capabilities as tools for the AI agent.
+            </li>
+            <li>
+                <strong>Existing APIs:</strong>
+                Handle business logic, validation, and data access.
+            </li>
+            <li>
+                <strong>Databases and Knowledge Sources:</strong>
+                Store employee information, payroll records,
+                leave details, and organizational policies.
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>2. Existing Enterprise APIs</h2>
+
+        <p>
+            The solution reuses existing APIs instead of duplicating
+            business logic inside the AI agent.
+        </p>
+
+        <table>
+            <tr>
+                <th>API / Service</th>
+                <th>Responsibility</th>
+            </tr>
+            <tr>
+                <td>HRService.api</td>
+                <td>Employee details and organizational information</td>
+            </tr>
+            <tr>
+                <td>Leave.api</td>
+                <td>Leave balance, leave history, and leave applications</td>
+            </tr>
+            <tr>
+                <td>Payroll.api</td>
+                <td>Salary slips and payroll information</td>
+            </tr>
+            <tr>
+                <td>ITHelp.api</td>
+                <td>IT support, troubleshooting, and ticket management</td>
+            </tr>
+            <tr>
+                <td>TaxService.api</td>
+                <td>Tax declarations and tax-related information</td>
+            </tr>
+            <tr>
+                <td>Expense.api</td>
+                <td>Expense claims and reimbursement status</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>3. MCP Server Layer</h2>
+
+        <p>
+            Each MCP server exposes selected API capabilities through
+            well-defined tools that the AI agent can discover and invoke.
+        </p>
+
+        <ul>
+            <li><strong>HR MCP Server:</strong> Employee information tools.</li>
+            <li><strong>Leave MCP Server:</strong> Leave balance and history tools.</li>
+            <li><strong>Payroll MCP Server:</strong> Salary slip tools.</li>
+            <li><strong>IT Helpdesk MCP Server:</strong> Knowledge search and ticket tools.</li>
+            <li><strong>Tax MCP Server:</strong> Tax information tools.</li>
+            <li><strong>Expense MCP Server:</strong> Expense and reimbursement tools.</li>
+        </ul>
+
+        <p>Example MCP tools:</p>
+
+        <ul>
+            <li><code>get_my_leave_balance</code></li>
+            <li><code>get_my_salary_slip</code></li>
+            <li><code>get_employee_details</code></li>
+            <li><code>search_it_knowledge</code></li>
+            <li><code>create_support_ticket</code></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. AI Agent Using Semantic Kernel</h2>
+
+        <p>The AI agent is responsible for:</p>
+
+        <ul>
+            <li>Understanding employee questions.</li>
+            <li>Discovering and selecting appropriate MCP tools.</li>
+            <li>Calling tools with the required arguments.</li>
+            <li>Processing tool results and generating useful responses.</li>
+            <li>Handling errors and missing information.</li>
+            <li>Requesting confirmation before sensitive write operations.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. End-to-End Request Flow</h2>
+
+        <ol>
+            <li>The employee asks: "How many annual leave days do I have left?"</li>
+            <li>The AI agent interprets the question.</li>
+            <li>The agent selects the appropriate leave MCP tool.</li>
+            <li>The MCP server validates the request and calls the Leave API.</li>
+            <li>The Leave API retrieves the authorized employee's balance.</li>
+            <li>The result returns through MCP to the AI agent.</li>
+            <li>The AI agent explains the result to the employee.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>6. RAG Integration</h2>
+
+        <p>
+            Retrieval-Augmented Generation (RAG) can be added for
+            questions involving HR policies, IT troubleshooting,
+            leave policies, and internal documentation.
+        </p>
+
+        <ol>
+            <li>Ingest approved documents into a searchable knowledge base.</li>
+            <li>Split documents into chunks and generate embeddings.</li>
+            <li>Store embeddings in a vector database such as Qdrant.</li>
+            <li>Expose knowledge search through an MCP tool.</li>
+            <li>Retrieve relevant content and generate a grounded answer.</li>
+        </ol>
+
+        <p>
+            The agent can route transactional requests to business APIs
+            and policy questions to the RAG knowledge-search tool.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>7. Security and Governance</h2>
+
+        <ul>
+            <li>Authenticate employees through enterprise SSO.</li>
+            <li>Apply role-based access control (RBAC).</li>
+            <li>Validate tool inputs and enforce authorization in APIs.</li>
+            <li>Keep read-only tools separate from write operations.</li>
+            <li>Require confirmation for sensitive or irreversible actions.</li>
+            <li>Store secrets securely and use encrypted communication.</li>
+            <li>Monitor tool calls, failures, latency, and access attempts.</li>
+            <li>Prevent unauthorized access to another employee's data.</li>
+        </ul>
+
+        <p class="note">
+            <strong>Important:</strong> MCP provides a standard way to
+            expose and invoke tools. It does not replace authentication,
+            authorization, or business rules enforced by the existing APIs.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>8. Implementation Plan</h2>
+
+        <ol>
+            <li>Build and test the HR MCP server.</li>
+            <li>Connect the MCP client to the C# Semantic Kernel agent.</li>
+            <li>Discover MCP tools dynamically.</li>
+            <li>Implement read-only employee assistant capabilities.</li>
+            <li>Integrate payroll, leave, IT, tax, and expense services.</li>
+            <li>Add RAG for internal policies and troubleshooting.</li>
+            <li>Implement authorization, confirmation, logging, and monitoring.</li>
+            <li>Test performance, reliability, and security before deployment.</li>
+        </ol>
+    </div>
+
+    <footer>
+        Enterprise Employee Assistant | C#/.NET | Semantic Kernel | MCP | RAG
+    </footer>
+
+</body>
+</html>

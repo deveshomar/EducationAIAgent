@@ -1,0 +1,55 @@
+﻿
+============================MCP CLIENT=================================
+This is just like Postman for MCP Servers
+We can connect and test.
+
+Method 1 -  create C# console application and use the code snippet above to connect to MCP server and discover tools.
+Method 2 -   MCP inspector is a tool that allows you to connect to an MCP server and discover available tools. You can download it from the official MCP GitHub repository. 
+
+
+
+1. What is MCP discovery?
+MCP stands for Model Context Protocol. It defines a standard way for AI applications to communicate with external tools and data sources.
+For example, your Employee Assistant connects to two MCP servers:
+- HR server — employee profile, leave balance and salary slip.
+- IT server — IT knowledge search, network diagnostics and device details.
+
+How tool discovery works
+1. Connect to the MCP server
+   The MCP client establishes a connection using the configured transport, such as stdio or Streamable HTTP.
+2. Initialize the MCP session
+   The client and server negotiate protocol capabilities and establish the session.
+3. Request available tools
+   The client sends the MCP tools/list request.
+4. Receive tool metadata
+   The server returns tool names, descriptions and input schemas.
+
+   {
+  "server": "hr",
+  "name": "get_my_leave_balance",
+  "description": "Read an employee's leave balance from the HR API.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "employeeId": {
+        "type": "string"
+      }
+    },
+    "required": ["employeeId"]
+  }
+}
+
+5. Select and call a tool
+   Your application or AI model identifies the appropriate tool, supplies valid arguments and sends a tool-call request.
+
+
+5. How the user's query maps to a discovered tool
+User asks:
+Can you please tell me leave balance for EMP101?
+
+The application identifies get_my_leave_balance as the matching tool.
+Tool arguments:
+
+{
+  "employeeId": "EMP101"
+}

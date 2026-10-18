@@ -1,0 +1,9 @@
+﻿Sample question to ask in ai agents
+
+Retrieve the salary slip details for EMP101 for September 2026.Query	Expected tool
+Find VPN troubleshooting instructions	search_it_knowledge
+Check network connectivity for EMP101	get_network_diagnostics
+What device is assigned to EMP101?	get_device_details
+Check remaining leave for EMP101	get_my_leave_balance
+Show EMP101's employee details	get_my_employee_profile
+Get EMP101's September 2026 salary slip	get_my_salary_slip

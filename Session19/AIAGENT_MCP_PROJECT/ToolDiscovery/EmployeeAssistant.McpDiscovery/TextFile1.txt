@@ -1,0 +1,130 @@
+﻿//MCP CODE
+
+
+
+using ModelContextProtocol.Client;
+
+var servers = new Dictionary<string, string>
+{
+    ["HR"] = "http://localhost:5170/mcp",
+    ["IT"] = "http://localhost:5226/mcp"
+};
+
+foreach (var server in servers)
+{
+    Console.WriteLine($"\nConnecting to {server.Key}: {server.Value}");
+
+    try
+    {
+        var transport = new HttpClientTransport(
+            new HttpClientTransportOptions
+            {
+                Endpoint = new Uri(server.Value)
+            });
+
+        await using var client =
+            await McpClient.CreateAsync(transport);
+
+        var tools = await client.ListToolsAsync();
+
+        Console.WriteLine($"Discovered {tools.Count} tools:");
+
+        foreach (var tool in tools)
+        {
+            Console.WriteLine($"\nTool: {tool.Name}");
+            Console.WriteLine($"Description: {tool.Description}");
+            Console.WriteLine($"Input schema: {tool.JsonSchema}");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(
+            $"Failed to connect or discover tools: {ex.Message}");
+    }
+}
+
+
+//
+ CALLNG CODE
+
+ 
+using System.Text.Json;
+using ModelContextProtocol.Client;
+
+var endpoint = "http://localhost:5001/mcp";
+
+var transport = new HttpClientTransport(
+    new HttpClientTransportOptions
+    {
+        Endpoint = new Uri(endpoint)
+    });
+
+await using var client = await McpClient.CreateAsync(transport);
+
+// 1. Discover tools dynamically.
+var tools = await client.ListToolsAsync();
+
+Console.WriteLine("Available HR MCP tools:");
+
+for (var i = 0; i < tools.Count; i++)
+{
+    Console.WriteLine(
+        $"{i + 1}. {tools[i].Name} - {tools[i].Description}");
+}
+
+Console.Write("\nSelect a tool number: ");
+
+if (!int.TryParse(Console.ReadLine(), out var selection) ||
+    selection < 1 ||
+    selection > tools.Count)
+{
+    Console.WriteLine("Invalid selection.");
+    return;
+}
+
+var selectedTool = tools[selection - 1];
+
+Console.WriteLine($"\nSelected: {selectedTool.Name}");
+Console.WriteLine("Input schema:");
+Console.WriteLine(selectedTool.JsonSchema);
+
+Console.WriteLine(
+    "\nEnter arguments as JSON, matching the input schema.");
+Console.WriteLine("Example only: {\"employeeId\":\"EMP101\"}");
+
+Console.Write("Arguments: ");
+var json = Console.ReadLine();
+
+using var document = JsonDocument.Parse(
+    string.IsNullOrWhiteSpace(json) ? "{}" : json);
+
+var arguments = new Dictionary<string, object?>();
+
+foreach (var property in document.RootElement.EnumerateObject())
+{
+    arguments[property.Name] = property.Value.Clone();
+}
+
+// 2. Invoke the selected tool.
+var result = await client.CallToolAsync(
+    selectedTool.Name,
+    arguments);
+
+Console.WriteLine("\nMCP tool result:");
+
+foreach (var content in result.Content)
+{
+    if (content is ModelContextProtocol.Protocol.TextContentBlock text)
+    {
+        Console.WriteLine(text.Text);
+    }
+    else
+    {
+        Console.WriteLine(JsonSerializer.Serialize(content));
+    }
+}
+
+if (result.IsError)
+{
+    Console.WriteLine("\nThe MCP tool reported an error.");
+}
