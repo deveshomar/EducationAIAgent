@@ -1,7 +1,4 @@
-﻿
-
-
-========================MCP========================================
+﻿========================MCP========================================
 
 Can we get emp data from Chat GPT
 can we get emp data from Claude Desktop,
@@ -88,7 +85,7 @@ InPUT-
 
 
 
-Oupput-
+Output-
 {
   "jsonrpc": "2.0",
   "result": {

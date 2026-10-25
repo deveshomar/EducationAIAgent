@@ -101,6 +101,7 @@ b. Creating MCP servers      (Azure or Azure Appservice)
     Paryoll.MCP ->Paryoll.api 
     ItHelp.MCP  ->IThelp.api   
     HRServiceMCP->  HRService.api .api 
+
    
 c. Creating MCP gateways      (Azure or Azure Appservice)
    Contains all MCP address
@@ -120,6 +121,124 @@ d. Creating AI Agent
 
 
 ===================================================================================
+
+Below tools will be discover and send to LLM by AIagent
+
+
+
+AI Agent -> MCP Gateway- GET TOOLS -> SEND TO LLM
+Below are tools 
+
+[
+  {
+    "server": "hr",
+    "Name": "get_my_salary_slip",
+    "Description": "Retrieve salary slip metadata for an employee and month in YYYY-MM format. Read-only operation.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by the trusted application",
+          "type": "string"
+        },
+        "month": {
+          "description": "Salary month in YYYY-MM format",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId",
+        "month"
+      ]
+    }
+  },
+  {
+    "server": "hr",
+    "Name": "get_my_employee_profile",
+    "Description": "Retrieve an employee profile from the HR API.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by the trusted application",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  },
+  {
+    "server": "hr",
+    "Name": "get_my_leave_balance",
+    "Description": "Read an employee\u0027s leave balance from the HR API. The employee ID must come from trusted authenticated identity context, not from an untrusted chat message.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by the trusted application",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  },
+  {
+    "server": "it",
+    "Name": "search_it_knowledge",
+    "Description": "Search the IT knowledge base for read-only troubleshooting guidance.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "description": "Search query, such as VPN, DNS or Wi-Fi",
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  {
+    "server": "it",
+    "Name": "get_network_diagnostics",
+    "Description": "Read network diagnostic information for an authorized employee.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by trusted identity context",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  },
+  {
+    "server": "it",
+    "Name": "get_device_details",
+    "Description": "Retrieve device details for an authorized employee.",
+    "JsonSchema": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "description": "Employee ID resolved by trusted identity context",
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId"
+      ]
+    }
+  }
+]
+
 
 
 

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise AI Governance — C#/.NET, RAG & MCP</title>
+<style>
+:root{
+  --bg:#07111f;--panel:#101f33;--panel2:#13263d;--text:#edf5ff;--muted:#a8bbd3;
+  --cyan:#58d5e8;--blue:#77a8ff;--green:#72e0b0;--amber:#ffd27a;--red:#ff8f9b;
+  --line:#29425f;--shadow:0 18px 50px rgba(0,0,0,.28)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#102744 0,#07111f 55%);color:var(--text);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+header{position:sticky;top:0;z-index:20;background:rgba(7,17,31,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:12px 22px;display:flex;gap:14px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.2px}.brand span{color:var(--cyan)}
+.navright{display:flex;gap:8px;align-items:center}
+button{border:1px solid #385776;background:#132941;color:var(--text);padding:9px 13px;border-radius:10px;font:inherit;cursor:pointer}
+button:hover{border-color:var(--cyan);background:#183550}
+.progress{height:3px;background:#1b2d43}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:width .2s}
+main{max-width:1200px;margin:auto;padding:30px 22px 80px}
+.slide{display:none;min-height:calc(100vh - 130px);padding:clamp(20px,4vw,48px);margin:18px 0;background:linear-gradient(145deg,rgba(16,31,51,.97),rgba(9,23,39,.98));border:1px solid #27415e;border-radius:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.slide.active{display:block;animation:appear .28s ease}
+@keyframes appear{from{opacity:.25;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;color:var(--cyan);font-size:.78rem;font-weight:800}
+h1{font-size:clamp(2.2rem,5.6vw,4.8rem);line-height:1.04;margin:18px 0}
+h2{font-size:clamp(1.7rem,3.5vw,2.7rem);line-height:1.12;margin:12px 0 24px}
+h3{margin:0 0 8px;font-size:1.05rem}
+p{color:var(--muted);font-size:1.02rem}
+.lead{font-size:clamp(1.12rem,2vw,1.4rem);max-width:820px}
+.pill{display:inline-block;border:1px solid #2b526b;background:#102d42;color:#a8f1f6;border-radius:999px;padding:6px 11px;font-size:.82rem;margin:5px 5px 0 0}
+.hero-grid,.grid2,.grid3,.principles{display:grid;gap:16px}
+.hero-grid{grid-template-columns:1.1fr .9fr;align-items:center;margin-top:28px}
+.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.principles{grid-template-columns:repeat(5,minmax(0,1fr));margin-top:22px}
+.card{background:rgba(19,38,61,.82);border:1px solid #294561;border-radius:16px;padding:18px}
+.card p{font-size:.94rem;margin:6px 0 0}
+.icon{font-size:1.55rem;margin-bottom:8px}
+.big-number{font-size:2.4rem;font-weight:850;color:var(--cyan)}
+.flow{display:flex;flex-direction:column;align-items:center;gap:9px;margin:20px auto;max-width:900px}
+.flowbox{width:100%;border:1px solid #31516e;border-radius:14px;padding:14px 18px;background:#10243a}
+.flowbox strong{display:block;font-size:1.02rem}
+.flowbox small{display:block;color:var(--muted);margin-top:3px}
+.flowbox.auth{border-color:#3c8f88;background:linear-gradient(110deg,#123d42,#10283b)}
+.flowbox.agent{border-color:#4e79b9;background:linear-gradient(110deg,#172f52,#10243a)}
+.flowbox.gateway{border-color:#a17a37;background:linear-gradient(110deg,#3a3020,#17283a)}
+.flowbox.response{border-color:#458e6e;background:linear-gradient(110deg,#153d32,#10283b)}
+.arrow{font-size:1.4rem;color:var(--cyan);line-height:1}
+.branch{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%}
+.mini{border:1px solid var(--line);background:#0b1b2c;border-radius:12px;padding:14px}
+.mini strong{display:block}.mini p{font-size:.88rem;margin:5px 0 0}
+.label{font-size:.76rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--amber);font-weight:800;margin-bottom:8px}
+.tagrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.tag{font-size:.82rem;border:1px solid #35516c;border-radius:8px;padding:5px 8px;color:#d7e7f8;background:#0b1b2c}
+.callout{border-left:4px solid var(--cyan);padding:14px 18px;background:#10263a;border-radius:0 12px 12px 0;color:#dbeeff;margin-top:18px}
+.warn{border-left-color:var(--amber)}.good{border-left-color:var(--green)}
+table{border-collapse:collapse;width:100%;margin-top:18px;font-size:.94rem}
+th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line)}
+th{color:var(--cyan);background:#10243a}
+td{color:#d6e4f5}td:first-child{font-weight:750}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#9fe9ee;background:#081725;padding:2px 5px;border-radius:5px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#071521;border:1px solid #29445e;border-radius:14px;padding:18px;color:#d6e9fa;font-size:.9rem;line-height:1.55}
+.step{display:flex;gap:14px;align-items:flex-start;margin:15px 0}
+.num{flex:0 0 36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#173e53;color:var(--cyan);font-weight:850}
+.step p{margin:3px 0}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:.85rem;margin-top:28px}
+.slide-count{font-variant-numeric:tabular-nums}
+.key{color:var(--muted);font-size:.8rem}
+@media(max-width:850px){.hero-grid,.grid2,.grid3,.principles{grid-template-columns:1fr 1fr}.principles{grid-template-columns:repeat(2,minmax(0,1fr))}.slide{min-height:auto}.hero-grid{grid-template-columns:1fr}}
+@media(max-width:560px){main{padding:14px 10px 50px}.slide{padding:22px 16px;border-radius:16px}.grid2,.grid3,.principles,.branch{grid-template-columns:1fr}.nav{padding:10px 12px}.brand{font-size:.9rem}.navright button{padding:7px 9px}}
+@media print{header,.navright,.footer .controls{display:none!important}body{background:#fff;color:#111}.slide{display:block!important;min-height:0;page-break-after:always;background:#fff;color:#111;border:1px solid #ccc;box-shadow:none}.card,.flowbox,.mini,th{background:#f2f6fa;color:#111}.card p,p,td,.flowbox small{color:#333}.tag{color:#111;background:#f4f4f4}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">AI <span>Governance</span> / C# + MCP</div>
+    <div class="navright">
+      <button id="prev" aria-label="Previous slide">← Prev</button>
+      <span class="slide-count" id="counter">1 / 8</span>
+      <button id="next" aria-label="Next slide">Next →</button>
+      <button id="print">Print / PDF</button>
+    </div>
+  </div>
+  <div class="progress"><div id="progress"></div></div>
+</header>
+<main>
+<section class="slide active">
+  <div class="eyebrow">Enterprise architecture · Interactive presentation</div>
+  <div class="hero-grid">
+    <div>
+      <h1>AI Governance<br><span style="color:var(--cyan)">End to End</span></h1>
+      <p class="lead">Where to apply fairness, explainability, privacy, safety, and controllability in an enterprise AI application built with C#/.NET, RAG, Semantic Kernel, and MCP.</p>
+      <span class="pill">Identity first</span><span class="pill">Defense in depth</span><span class="pill">Human oversight</span>
+    </div>
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <h3>Core architecture rule</h3>
+      <p>Authenticate the user before sensitive processing. Authorize every protected action at the gateway and enforce resource permissions again in backend APIs.</p>
+      <div class="callout good">The LLM may decide which tool to request; it must never decide whether the user is authorized.</div>
+    </div>
+  </div>
+  <div class="footer"><span>Employee Assistant example: HR · Payroll · IT · Leave</span><span class="key">Use ← / → to navigate</span></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">01 · Architecture flow</div>
+  <h2>Correct enterprise AI governance flow</h2>
+  <p>Identity is established first. Retrieval and tool calls follow separate controlled paths, then the response is validated before delivery.</p>
+  <div class="flow">
+    <div class="flowbox auth"><strong>1. Identity & Authentication</strong><small>Validate token/session · verify identity · create trusted identity context · reject unauthenticated requests</small></div>
+    <div class="arrow">↓</div>
+    <div class="flowbox"><strong>2. Request Policy & Input Screening</strong><small>Validate input · detect abuse/prompt injection · request-level authorization · rate limits</small></div>
+    <div class="arrow">↓</div>
+    <div class="flowbox agent"><strong>3. AI Agent — C# / Semantic Kernel</strong><small>Interpret intent · plan within limits · select from permitted tools · do not trust user-supplied identity claims</small></div>
+    <div class="arrow">↓</div>
+    <div class="branch">
+      <div class="mini"><strong>4A. RAG Pipeline</strong><p>Document access control · metadata/tenant filtering · grounded retrieval · source references</p></div>
+      <div class="mini"><strong>4B. MCP Gateway</strong><p>Authenticate caller/context · authorize tool · validate arguments · rate-limit · audit</p></div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="flowbox gateway"><strong>5. Backend APIs & Data</strong><small>Resource-level authorization · business rules · minimum necessary data · read/write permissions</small></div>
+    <div class="arrow">↓</div>
+    <div class="flowbox response"><strong>6. Response Validation</strong><small>Verify against actual tool/RAG results · sensitive-data checks · safety/policy validation · escalate if uncertain</small></div>
+    <div class="arrow">↓</div>
+    <div class="flowbox response"><strong>Final AI Response</strong><small>Answer + evidence/citations where applicable</small></div>
+  </div>
+  <div class="callout warn">Important: the RAG branch may return evidence without invoking MCP. Any protected document must be access-checked before it is supplied to the model.</div>
+  <div class="footer"><span>Identity first · authorization at every protected boundary</span><span class="slide-count">Architecture</span></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">02 · Layer-by-layer controls</div>
+  <h2>Where to apply what — and why</h2>
+  <table>
+    <thead><tr><th>Layer</th><th>Controls</th><th>Purpose / example</th></tr></thead>
+    <tbody>
+      <tr><td>1. Identity</td><td>OIDC/OAuth token validation, session checks, trusted claims</td><td>Know who is asking. Reject invalid or expired credentials.</td></tr>
+      <tr><td>2. Input / policy</td><td>Schema and size checks, abuse screening, prompt-injection detection, request limits</td><td>Reject malformed or abusive input early; screening is not a substitute for authorization.</td></tr>
+      <tr><td>3. AI agent</td><td>Trusted instructions, bounded planning, tool allowlists, max steps/timeouts</td><td>Keep the agent's behavior and autonomy within defined limits.</td></tr>
+      <tr><td>4A. RAG</td><td>Document ACLs, tenant/metadata filters, source IDs, grounding</td><td>Retrieve only documents the current user may see; cite real sources.</td></tr>
+      <tr><td>4B. MCP gateway</td><td>Caller authentication, tool authorization, argument validation, quotas, audit IDs</td><td>Stop unauthorized tool calls even if the model requests them.</td></tr>
+      <tr><td>5. Backend APIs</td><td>Resource ownership, business rules, field minimization, transaction checks</td><td>Protect the actual data/action; never rely only on gateway checks.</td></tr>
+      <tr><td>6. Response</td><td>Grounding checks, data leakage checks, safety validation, escalation</td><td>Reduce unsupported answers and accidental disclosure before showing output.</td></tr>
+      <tr><td>7. Operations</td><td>Audit logs, metrics, incident response, human review, kill switch</td><td>Detect failures and misuse; investigate incidents and stop unsafe workflows.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">03 · Five principles</div>
+  <h2>Governance is cross-cutting</h2>
+  <p>These principles are not five separate boxes at the end of the pipeline. They influence the design, testing, execution, and monitoring of multiple layers.</p>
+  <div class="principles">
+    <div class="card"><div class="icon">⚖️</div><h3>Fairness</h3><p>Use consistent, relevant criteria; test outcomes across groups; review high-impact decisions.</p></div>
+    <div class="card"><div class="icon">🔎</div><h3>Explainability</h3><p>Retain evidence, source citations, decision factors, tool outcomes, and policy references.</p></div>
+    <div class="card"><div class="icon">🔐</div><h3>Privacy & Security</h3><p>Minimize data, enforce access controls, protect secrets, and secure logs and transport.</p></div>
+    <div class="card"><div class="icon">🛡️</div><h3>Safety</h3><p>Prevent harmful output and unsafe tool use; test jailbreaks and validate responses.</p></div>
+    <div class="card"><div class="icon">🎛️</div><h3>Controllability</h3><p>Bound execution, require approval, support stop switches, and audit actions.</p></div>
+  </div>
+  <div class="callout">Practical distinction: prompts guide the model; application policy, gateway checks, backend authorization, and operational controls enforce governance.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">04 · Worked example</div>
+  <h2>Query: “Show me EMP202's salary slip”</h2>
+  <p>Assume the signed-in user is EMP101 and has ordinary employee permissions.</p>
+  <div class="step"><div class="num">1</div><div><h3>Authenticate at entry</h3><p>Validate the token and derive the trusted identity EMP101 from verified claims—not from the prompt.</p></div></div>
+  <div class="step"><div class="num">2</div><div><h3>Agent selects a tool</h3><p>The agent may request <code>get_my_salary_slip</code>, but this request is not authorization.</p></div></div>
+  <div class="step"><div class="num">3</div><div><h3>Gateway checks permission</h3><p>Confirm the caller can invoke the tool and that arguments match the permitted operation. Do not trust an employee ID supplied only by the model.</p></div></div>
+  <div class="step"><div class="num">4</div><div><h3>Backend enforces resource access</h3><p>Payroll checks whether the authenticated identity can access that exact record. If not, deny the request.</p></div></div>
+  <div class="step"><div class="num">5</div><div><h3>Safe response and audit</h3><p>Return a minimal denial message, avoid leaking whether another employee's record exists, and log the security outcome.</p></div></div>
+  <div class="callout good"><strong>Expected outcome:</strong> no salary data is returned. The LLM cannot override the gateway or payroll API.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">05 · MCP gateway</div>
+  <h2>Security checks for every tool call</h2>
+  <div class="grid2">
+    <div class="card"><div class="icon">🪪</div><h3>Authenticate the caller</h3><p>Validate the calling service/user identity using the configured trust model. Propagate user identity securely when delegated access is required.</p></div>
+    <div class="card"><div class="icon">🔑</div><h3>Authorize the tool</h3><p>Apply role and permission policy to the specific tool. Tool discovery or visibility alone is not authorization.</p></div>
+    <div class="card"><div class="icon">🧾</div><h3>Validate arguments</h3><p>Check schema, allowed values, date ranges, resource ownership, and business constraints.</p></div>
+    <div class="card"><div class="icon">🚦</div><h3>Limit and monitor</h3><p>Enforce quotas, timeouts, correlation IDs, structured audit events, and alerts for suspicious patterns.</p></div>
+  </div>
+  <pre>Incoming MCP tool request
+        |
+        v
+Validate caller identity
+        |
+        v
+Authorize tool + resource + action
+        |
+        v
+Validate arguments and business policy
+        |
+        +---- denied ----> Reject + audit
+        |
+        v
+Call backend with trusted identity context
+        |
+        v
+Backend repeats resource-level authorization
+        |
+        v
+Return minimum necessary result + audit outcome</pre>
+  <div class="callout warn">Do not assume the MCP protocol itself automatically provides your application's complete authentication, authorization, or business policy. Configure and enforce these controls in the actual deployment.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">06 · Safety and human oversight</div>
+  <h2>Control actions by risk</h2>
+  <div class="grid3">
+    <div class="card"><div class="label">Lower risk</div><h3>Read approved knowledge</h3><p>Search IT documentation or explain a policy. Still enforce document access, grounding, and output checks.</p><div class="tagrow"><span class="tag">Read-only</span><span class="tag">Citations</span></div></div>
+    <div class="card"><div class="label">Moderate risk</div><h3>Create a support ticket</h3><p>Validate fields, confirm the destination, prevent duplicate submissions, and audit the result.</p><div class="tagrow"><span class="tag">Validation</span><span class="tag">Confirmation</span></div></div>
+    <div class="card"><div class="label">Higher risk</div><h3>Change payroll / approve leave</h3><p>Require explicit permissions, business-rule checks, and an authorized human approval where policy requires it.</p><div class="tagrow"><span class="tag">Approval</span><span class="tag">Audit</span></div></div>
+  </div>
+  <div class="callout good">Human approval must be bound to the exact action and parameters. Re-check authorization and policy when executing; an approval screen alone is not a security boundary.</div>
+  <h3 style="margin-top:26px">Operational kill switch</h3>
+  <p>Provide an administrator-controlled way to disable an agent, a tool, or all write operations during an incident. Log who activated it, when, and why.</p>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">07 · Implementation checklist</div>
+  <h2>Before production deployment</h2>
+  <div class="grid2">
+    <div class="card"><h3>Identity & access</h3>
+      <p>☐ Token/session validation<br>☐ Trusted identity context<br>☐ Role and resource authorization<br>☐ Backend authorization repeated</p></div>
+    <div class="card"><h3>Agent & retrieval</h3>
+      <p>☐ Bounded tool calls and timeouts<br>☐ RAG document-level access control<br>☐ Prompt-injection tests<br>☐ Source-grounded responses</p></div>
+    <div class="card"><h3>Data & response</h3>
+      <p>☐ Data minimization and redaction<br>☐ Secrets excluded from prompts/logs<br>☐ Sensitive output checks<br>☐ Fail safely when evidence is missing</p></div>
+    <div class="card"><h3>Operations & people</h3>
+      <p>☐ Audit trail and correlation IDs<br>☐ Fairness and safety evaluations<br>☐ Human approval for high-impact actions<br>☐ Incident process and kill switch</p></div>
+  </div>
+  <div class="callout">Start with a read-only Employee Assistant. Add write tools only after authorization, auditability, approval workflows, and failure handling are tested end to end.</div>
+  <div class="footer"><span>AI Governance · C#/.NET · RAG · Semantic Kernel · MCP</span><span>End</span></div>
+</section>
+</main>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let current=0;
+const counter=document.getElementById('counter');
+const progress=document.getElementById('progress');
+function show(i){
+ current=Math.max(0,Math.min(slides.length-1,i));
+ slides.forEach((s,n)=>s.classList.toggle('active',n===current));
+ counter.textContent=`${current+1} / ${slides.length}`;
+ progress.style.width=`${((current+1)/slides.length)*100}%`;
+ document.getElementById('prev').disabled=current===0;
+ document.getElementById('next').disabled=current===slides.length-1;
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('prev').addEventListener('click',()=>show(current-1));
+document.getElementById('next').addEventListener('click',()=>show(current+1));
+document.getElementById('print').addEventListener('click',()=>window.print());
+document.addEventListener('keydown',e=>{
+ if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current+1)}
+ if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}
+ if(e.key==='Home')show(0);
+ if(e.key==='End')show(slides.length-1);
+});
+show(0);
+</script>
+</body>
+</html>
